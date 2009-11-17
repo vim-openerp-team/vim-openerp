@@ -1,0 +1,172 @@
+snippet #!
+	#!/usr/bin/python
+
+snippet imp
+	import ${1:module}
+# Module Docstring
+snippet docs
+	'''
+	File: ${1:`Filename('$1.py', 'foo.py')`}
+	Author: ${2:`g:snips_author`}
+	Description: ${3}
+	'''
+snippet wh
+	while ${1:condition}:
+		${2:# code...}
+snippet for
+	for ${1:needle} in ${2:haystack}:
+		${3:# code...}
+# New Class
+snippet cl
+	class ${1:ClassName}(${2:object}):
+		"""${3:docstring for $1}"""
+		def __init__(self, ${4:arg}):
+			${5:super($1, self).__init__()}
+			self.$4 = $4
+			${6}
+
+snippet copyright
+	#############################################################
+	# TODAY
+	#############################################################
+	${1}
+    
+
+snippet oo Open Object\Model
+	class ${1:ClassName}(osv.osv):
+		_name_ = '${2:ObjectName}'
+		_description = '${3}'
+
+		_columns = {
+			${4}
+		}
+	
+	${5:$1}()
+	${6}
+
+snippet ooi Open Object\Model
+	class ${1:ClassName}(osv.osv):
+		_inherit = '${2:ObjectName}'
+
+		_columns = {
+			${3:# ... code}
+		}
+	
+	${4:$1}()
+	${5}
+
+snippet oo Open Object\Wizard
+	class ${1:ClassName}(osv.osv_memory):
+		_name_ = '${2:ObjectName}'
+		_description = '${3}'
+
+		_columns = {
+			${4:# ... code}
+		}
+
+	${5:$1}()
+	${6}
+
+snippet fields fields.char
+	'${1:fieldname}' : fields.char('${2:label}', size=${3:64}, required=${4:True}, select=${5:1},),
+	${6}
+snippet fields fields.many2one
+	'${1:fieldname}_id' : fields.many2one('${2:ObjectName}', '${3:Label}', required=${4:True}, select=${5:1},),
+	${6}
+snippet fields fields.many2many
+	'${1:fieldname}_ids' : fields.many2many('${2:ObjectName}', '${3:TableRel}', '${4:src_id}', '${5:dst_id}', '${6:Label}',),
+	${7}
+snippet fields fields.one2many
+	'${1:fieldname}_ids' : fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}',),
+	${5}
+snippet fields fields.function
+	'${1:fieldname}' : fields.function('${2:FunctionName}',
+					    method=${3:True},
+					    string='${4:label}',
+					    type='${5:float}'
+					    store=${6:False},),
+	${7}
+
+snippet func def create
+	def create(self, cr, uid, values, context=None):
+	    return super(${1:ClassName}, self).create(cr, uid, values, context=context)
+	${2}
+
+snippet func def write
+	def write(self, cr, uid, ids, values, context=None):
+	    return super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
+	${2}
+
+snippet _ _columns
+	_columns = {
+		${1:# ... code}
+	}
+	${2}
+
+snippet _ _defaults
+	_defauls = {
+		${1:# ... code}
+	}
+	${2}
+
+snippet fm
+# New Function
+snippet def
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		"""${3:docstring for $1}"""
+		${4:pass}
+snippet deff
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		${3}
+# New Method
+snippet defs
+	def ${1:mname}(self, ${2:arg}):
+		${3:pass}
+# New Property
+snippet property
+	def ${1:foo}():
+		doc = "${2:The $1 property.}"
+		def fget(self):
+			${3:return self._$1}
+		def fset(self, value):
+			${4:self._$1 = value}
+# Lambda
+snippet ld
+	${1:var} = lambda ${2:vars} : ${3:action}
+snippet .
+	self.
+snippet try Try/Except
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+snippet try Try/Except/Else
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+snippet try Try/Except/Finally
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	finally:
+		${5:pass}
+snippet try Try/Except/Else/Finally
+	try:
+		${1:pass}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5:pass}
+	finally:
+		${6:pass}
+# if __name__ == '__main__':
+snippet ifmain
+	if __name__ == '__main__':
+		${1:main()}
+# __magic__
+snippet _ __init__
+	__${1:init}__${2}
