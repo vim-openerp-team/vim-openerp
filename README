@@ -1,0 +1,12 @@
+=====================
+OpenObject Vim Editor
+=====================
+
+Installation
+------------
+
+" Include OepnObject Configuration
+if filereadable($HOME."/.vim/openobjectrc")
+  source $HOME/.vim/openobjectrc
+endif
+
