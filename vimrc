@@ -147,3 +147,22 @@ cabbr td tab delete
 
 map T :TaskList<CR>
 map F :TlistToggle<CR>
+
+"
+" Uncomment this if you want to use pylint checker when you save your file
+"
+"     autocmd FileType python compiler pylint
+"
+" Above is realized with :Pylint command. To disable calling Pylint every
+" time a buffer is saved put into .vimrc file
+"
+"     let g:pylint_onwrite = 0
+"
+" Displaying code rate calculated by Pylint can be avoided by setting
+"
+"     let g:pylint_show_rate = 0
+"
+" Openning of QuickFix window can be disabled with
+"
+"     let g:pylint_cwindow = 0
+
