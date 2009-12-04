@@ -199,6 +199,12 @@ snippet search
 snippet create
 	id = self.create(cr, uid, ${1:vals}, context=context)
 
+snippet write
+	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)
+
+snippet unlink
+	self.unlink(cr, uid, ${1:ids}, context=context)
+
 #
 # Define all variables in osv.osv begin by _
 #
