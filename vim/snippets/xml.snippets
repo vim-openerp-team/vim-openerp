@@ -71,4 +71,14 @@ snippet form
 	    $0
 	</form>
 
+snippet menu Action
+	<menuitem id="menu_${1:ir_model_data}" 
+	    parent="menu_${2:menu_parent}"
+	    sequence="${3:20}"
+	    action="action_${4:Action}"/>
 
+snippet menu Name
+	<menuitem id="menu_${1:ir_model_data}" 
+	    parent="menu_${2:menu_parent}"
+	    sequence="${3:20}"
+	    name="${4:Label}"/>
