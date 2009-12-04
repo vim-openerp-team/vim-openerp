@@ -1,0 +1,74 @@
+snippet <?
+	<?xml version="1.0" encoding="UTF-8"?>
+
+snippet oerp
+	<openerp>
+	    <data>
+	    $0
+	    </data>
+	</openerp>
+
+snippet field field
+	<field name="${1:Field}"/>
+snippet field field colspan
+	<field name="${1:Field}" colspan="${2:4}"/>
+snippet field field colspan col
+	<field name="${1:Field}" colspan="${2:4}" col="${3:4}"/>
+
+snippet sep
+	<separator string="${1:Label}" colspan="${2:4}"/>
+
+snippet group
+	<group colspan="${1:4}">
+	    $0
+	</group>
+
+snippet notebook
+	<notebook>
+	    <page string="${1:Label}">
+		$0
+	    </page>
+	</notebook>
+
+snippet page
+	<page string="${1:Label}">
+	    $0
+	</page>
+
+snippet label
+	<label string="${1:Label}"/>
+
+snippet nl
+	<newline/>
+
+snippet rec
+	<record id="${1:ir_model_data}" model="${2:Model}">
+	    $0
+	</record>
+
+snippet ref
+	ref="${1:ir_model_data}"
+
+snippet eval
+	eval="${1:Value}"
+
+snippet nol
+	nolabel="1"
+
+snippet pos
+	position="${1:inside}"
+
+snippet mode
+	mode="tree,form"
+
+snippet tree
+	<tree string="${1:Label}">
+	    $0
+	</tree>
+
+snippet form
+	<form string="${1:Label}">
+	    $0
+	</form>
+
+
