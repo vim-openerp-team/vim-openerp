@@ -30,8 +30,10 @@ snippet copyright
 	# TODAY
 	#############################################################
 	${1}
-    
 
+#
+# Define class for OpenObject
+#
 snippet oo Open Object\Model
 	class ${1:ClassName}(osv.osv):
 		_name_ = '${2:ObjectName}'
@@ -67,6 +69,9 @@ snippet oo Open Object\Wizard
 	${5:$1}()
 	${6}
 
+#
+# Define type of fields
+#
 snippet fields fields.char
 	'${1:fieldname}' : fields.char('${2:label}', size=${3:64}, required=${4:True}, select=${5:1},),
 	${6}
@@ -87,6 +92,32 @@ snippet fields fields.function
 					    store=${6:False},),
 	${7}
 
+# Attribute for fields
+snippet domain
+	domain=[('${1:state}','${2:=}','${3:done}')]
+snippet help
+	help='${1:Help about Field}',
+snippet readonly
+	readonly=True,
+snippet required
+	required=True,
+snippet select
+	select=True,
+snippet ondel OnDelete Cascade
+	ondelete='cascade',
+snippet ondel OnDelete Set Null
+	ondelete='set null'
+
+#
+# Define function in osv.osv
+#
+snippet func def read
+	def read(self, cr, user, ids, fields=None, context=None, load='_classic_read'):
+	    res = super(${1:ClassName}, self).read(cr, user, ids, fields, context=context)
+	    #TODO : process on result
+	    return res
+	${2}
+
 snippet func def create
 	def create(self, cr, uid, values, context=None):
 	    return super(${1:ClassName}, self).create(cr, uid, values, context=context)
@@ -97,11 +128,95 @@ snippet func def write
 	    return super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
 	${2}
 
+snippet func def unlink
+	def unlink(self, cr, uid, ids, context=None):
+	    #TODO: process before delete resource
+	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
+	    return res
+	${2}
+
+snippet func def copy
+	def copy(self, cr, uid, id, default=None, context=None):
+	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
+	${2}
+
+snippet func def default_get
+	def default_get(self, cr, user, fields_list, context=None):
+	    values = {}
+	    return values
+	${1}
+
+snippet func def fields_get
+	def fields_get(self, cr, user, fields=None, context=None):
+	    return super(${1:ClassName}, self).fields_get(cr, user, fields, context, read_access)
+	${2}
+
+snippet func def init
+	def init(self, cr):
+	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
+		    )""")
+	${2}
+
+snippet func def _name_get
+	def name_get(self, cr, user, ids, context=None):
+	    #TODO : search on name field or _res_name fields
+	    #and make a result [(id, name), (id, name), ...] 
+	    if not context:
+		context = {}
+	    res = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
+	    return res
+	${2}
+
+snippet func def _name_search
+	def name_search(self, cr, user, name, args=None, operator='ilike', context=None, limit=80):
+	    #TODO: make a search on specific fields and get ids
+	    if not args:
+	        args=[]
+	    if not context:
+	        context={}
+	    ids = []
+	    if name:
+	        ids = self.search(cr, user, [('code','ilike',name)]+ args, limit=limit)
+	    if not ids:
+	        ids = self.search(cr, user, [('name',operator,name)]+ args, limit=limit)
+	    return self.name_get(cr, user, ids, context=context)
+	${2}
+
+snippet func on_change
+	def onchange_${1:fields}(self, cr, user, $1, context=None):
+	    #TODO : compute new values from the db/system 
+	    if not context:
+		context = {}
+	    $0
+	    return {
+		'field_1': res1
+		'field_2': res2
+	    }
+
+#
+# Define all variables in osv.osv begin by _
+#
+snippet _ _auto
+	_auto = False
+
 snippet _ _columns
 	_columns = {
 		${1:# ... code}
 	}
 	${2}
+snippet _ _constraints
+	def ${1:_check_method}(self, cr, user, ids, context=None):
+	    #TODO : check condition and return boolean accordingly
+	    if not context:
+		context={}
+	    return True
+
+	_constraints = [
+	    ($1, 'Error: Invalid Message', ['${2:field_name}']),
+	]
+
+snippet _ _date_name
+	_date_name='${1:Date field}'
 
 snippet _ _defaults
 	_defauls = {
@@ -109,6 +224,32 @@ snippet _ _defaults
 	}
 	${2}
 
+snippet _ _description
+	_description = ${1:Object description}
+
+snippet _ _order
+	_order = '${1:Field name to order}'
+
+snippet _ _parent_store
+	_parent_store = ${1:False}
+
+snippet _ _rec_name
+	_rec_name = '${1:Field name}'
+
+snippet _ _sequence
+	_sequence = '${1:Field name use as sequence}'
+
+snippet _ _sql_constraints
+	_sql_constraints = [
+	    ('${1:Field name}_uniq', 'unique ($1)', 'The $1 of the OpenERPModel must be unique !'),
+	]
+
+snippet _ _table
+	_table = '${1:Table name in PostgreSQL}'
+
+#
+# Other python declaration
+#
 snippet fm
 # New Function
 snippet def

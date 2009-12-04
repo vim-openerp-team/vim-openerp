@@ -5,8 +5,16 @@ OpenObject Vim Editor
 Installation
 ------------
 
-" Include OepnObject Configuration
+Add packages:
+- vim-python
+- exuberant-ctags
+
+ $ sudo apt-get install exuberant-ctags
+
+
+" Include OpenObject Configuration
 if filereadable($HOME."/.vim/openobjectrc")
   source $HOME/.vim/openobjectrc
 endif
+
 
