@@ -197,10 +197,7 @@ snippet search
 	self.search(cr, uid, [('${1:state}','${2:=}','${3:done}')], context=context)
 
 snippet create
-	vals = {
-	    'name': '${1:Value}',
-	}
-	id = self.create(cr, uid, vals, context=context)
+	id = self.create(cr, uid, ${1:vals}, context=context)
 
 #
 # Define all variables in osv.osv begin by _
