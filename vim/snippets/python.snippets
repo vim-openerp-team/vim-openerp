@@ -73,24 +73,31 @@ snippet oo Open Object\Wizard
 # Define type of fields
 #
 snippet fields fields.char
-	'${1:fieldname}' : fields.char('${2:label}', size=${3:64}, required=${4:True}, select=${5:1},),
-	${6}
+	'${1:fieldname}': fields.char('${2:Label}', size=${3:64}, ${4}),
+snippet fields fields.integer
+	'${1:fieldname}': fields.integer('${2:Label}', ${3}),
+snippet fields fields.float
+	'${1:fieldname}': fields.float('${2:Label}', ${3}),
+snippet fields fields.boolean
+	'${1:fieldname}': fields.boolean('${2:Label}', ${3}),
+snippet fields fields.date
+	'${1:fieldname}': fields.date('${2:Label}', ${3}),
+snippet fields fields.datetime
+	'${1:fieldname}': fields.datetime('${2:Label}', ${3}),
+snippet fields fields.selection
+	'${1:fieldname}': fields.selection(${2:[('','')]}, '${3:Label}', ${4}),
 snippet fields fields.many2one
-	'${1:fieldname}_id' : fields.many2one('${2:ObjectName}', '${3:Label}', required=${4:True}, select=${5:1},),
-	${6}
+	'${1:fieldname}_id': fields.many2one('${2:ObjectName}', '${3:Label}', ${4}),
 snippet fields fields.many2many
-	'${1:fieldname}_ids' : fields.many2many('${2:ObjectName}', '${3:TableRel}', '${4:src_id}', '${5:dst_id}', '${6:Label}',),
-	${7}
+	'${1:fieldname}_ids': fields.many2many('${2:ObjectName}', '${3:TableRel}', '${4:src_id}', '${5:dst_id}', '${6:Label}', ${7}),
 snippet fields fields.one2many
-	'${1:fieldname}_ids' : fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}',),
-	${5}
+	'${1:fieldname}_ids': fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}', ${5}),
 snippet fields fields.function
-	'${1:fieldname}' : fields.function(${2:FunctionName},
+	'${1:fieldname}': fields.function(${2:FunctionName},
 					    method=${3:True},
 					    string='${4:label}',
 					    type='${5:float}'
-					    store=${6:False},),
-	${7}
+					    store=${6:False}, ${7}),
 
 # Attribute for fields
 snippet domain
