@@ -85,7 +85,7 @@ snippet fields fields.one2many
 	'${1:fieldname}_ids' : fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}',),
 	${5}
 snippet fields fields.function
-	'${1:fieldname}' : fields.function('${2:FunctionName}',
+	'${1:fieldname}' : fields.function(${2:FunctionName},
 					    method=${3:True},
 					    string='${4:label}',
 					    type='${5:float}'
