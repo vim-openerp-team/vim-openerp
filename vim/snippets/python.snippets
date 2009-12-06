@@ -104,6 +104,9 @@ snippet fields fields.function
 					    string='${4:label}',
 					    type='${5:float}'
 					    store=${6:False}, ${7}),
+snippet fields fields.related
+	'${1:fieldname}': fields.related('${2:field in}', '${3:field rel}', type='${4:many2one}', ${5:relation='res.partner'}, 
+					    string='${6:Label}', ${7}),
 
 # Attribute for fields
 snippet domain
@@ -120,6 +123,8 @@ snippet ondel OnDelete Cascade
 	ondelete='cascade',
 snippet ondel OnDelete Set Null
 	ondelete='set null'
+snippet store
+	store=True,
 
 #
 # Define function in osv.osv
