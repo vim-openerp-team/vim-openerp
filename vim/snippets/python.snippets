@@ -37,6 +37,11 @@ snippet copyright
 	#############################################################
 	${1}
 
+# this snippet is usefull to clear the rule cache
+# specialy with OpenObject 5.2 and multi company
+snippet rule
+	self.pool.get('ir.rule').domain_get.clear_cache(cr.dbname)
+
 #
 # Define class for OpenObject
 #
