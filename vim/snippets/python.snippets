@@ -310,7 +310,7 @@ snippet property
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
 snippet .
-	self.
+	self.${1:method}(${2})
 snippet try Try/Except
 	try:
 		${1:pass}
