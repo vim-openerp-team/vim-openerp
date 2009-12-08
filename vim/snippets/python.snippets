@@ -32,10 +32,28 @@ snippet cl
 			${6}
 
 snippet copyright
-	#############################################################
-	# TODAY
-	#############################################################
-	${1}
+	##############################################################################
+	#
+	#    ${1:ModuleName} module for OpenERP, ${2:Description}
+	#    Copyright (C) ${3:200X} ${4:Company} (<http://${5:website}>) ${6:author}
+	#
+	#    This file is a part of $1
+	#
+	#    $1 is free software: you can redistribute it and/or modify
+	#    it under the terms of the GNU General Public License as published by
+	#    the Free Software Foundation, either version 3 of the License, or
+	#    (at your option) any later version.
+	#
+	#    $1 is distributed in the hope that it will be useful,
+	#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+	#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	#    GNU General Public License for more details.
+	#
+	#    You should have received a copy of the GNU General Public License
+	#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	#
+	##############################################################################
+	${7}
 
 # this snippet is usefull to clear the rule cache
 # specialy with OpenObject 5.2 and multi company
@@ -54,31 +72,31 @@ snippet oo Open Object\Model
 			${4}
 		}
 	
-	${5:$1}()
-	${6}
+	$1()
+	
 
 snippet ooi Open Object\Model
 	class ${1:ClassName}(osv.osv):
 		_inherit = '${2:ObjectName}'
 
 		_columns = {
-			${3:# ... code}
+			${3}
 		}
 	
-	${4:$1}()
-	${5}
+	$1()
+	
 
 snippet oom Open Object\Wizard
 	class ${1:ClassName}(osv.osv_memory):
 		_name_ = '${2:ObjectName}'
-		_description = '${3}'
+		_description = '${3:Description}'
 
 		_columns = {
-			${4:# ... code}
+			${4}
 		}
 
-	${5:$1}()
-	${6}
+	$1()
+	
 
 #
 # Define type of fields
