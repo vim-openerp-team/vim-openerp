@@ -66,7 +66,7 @@ snippet rule
 #
 snippet oo Open Object\Model
 	class ${1:ClassName}(osv.osv):
-		_name_ = '${2:ObjectName}'
+		_name = '${2:ObjectName}'
 		_description = '${3}'
 
 		_columns = {
@@ -89,7 +89,7 @@ snippet ooi Open Object\Model
 
 snippet oom Open Object\Wizard
 	class ${1:ClassName}(osv.osv_memory):
-		_name_ = '${2:ObjectName}'
+		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
 
 		_columns = {
