@@ -133,6 +133,9 @@ snippet fields fields.function
 snippet fields fields.related
 	'${1:fieldname}': fields.related('${2:field in}', '${3:field rel}', type='${4:many2one}', ${5:relation='res.partner'}, 
 					    string='${6:Label}', ${7}),
+snippet fields fields.property
+	'${1:fieldname}': fields.property('${2:object}', method=${3:True}, 
+			    string='${4:label}', type='${5:many2one}', ${6}),
 
 # Attribute for fields
 snippet domain
