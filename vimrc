@@ -170,5 +170,5 @@ map F :TlistToggle<CR>
 " uncomment this if you want use the 79 character max
 "
 " autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" autocmd FileType python match OverLength /\%80.*/
+" autocmd FileType python match OverLength /\%80v.*/
 " autocmd FileType python set textwidth=79
