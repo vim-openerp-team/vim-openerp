@@ -166,3 +166,9 @@ map F :TlistToggle<CR>
 "
 "     let g:pylint_cwindow = 0
 
+"
+" uncomment this if you want use the 120 caracter max
+"
+" autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" autocmd FileType python match OverLength /\%121v.*/
+" autocmd FileType python set textwidth=120
