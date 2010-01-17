@@ -21,6 +21,8 @@ snippet context
 	context="{}"
 snippet attrs
 	attrs="{'${1:required}': [('${2:state}','${3:=}', ${4:'value'})]}"
+snippet select
+	select="1"
 
 snippet sep
 	<separator string="${1:Label}" colspan="${2:4}"/>
@@ -48,7 +50,7 @@ snippet label
 snippet nl
 	<newline/>
 
-snippet rec
+snippet record
 	<record id="${1:ir_model_data}" model="${2:Model}">
 	    $0
 	</record>
@@ -78,14 +80,41 @@ snippet form
 	    $0
 	</form>
 
-snippet menu Action
+snippet menuitem Action
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    action="action_${4:Action}"/>
 
-snippet menu Name
+snippet menuitem Name
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    name="${4:Label}"/>
+
+snippet view form
+	<record id="view_${1:model}_form" model="ir.ui.view">
+	    <field name="name">${2:Name}</field>
+	    <field name="model">${3:Model}</field>
+	    <field name="type">form</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<form string="${4:Label}">
+		    <field name="${5:name}" select="1"/>
+		</form>
+	    </field>
+	</record>
+
+snippet view tree
+	<record id="view_${1:model}_tree" model="ir.ui.view">
+	    <field name="name">${2:Name}</field>
+	    <field name="model">${3:Model}</field>
+	    <field name="type">tree</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<tree string="${4:Label}">
+		    <field name="${5:name}"/>
+		</tree>
+	    </field>
+	</record>
+
