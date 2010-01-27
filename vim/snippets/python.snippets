@@ -279,9 +279,8 @@ snippet _ _date_name
 
 snippet _ _defaults
 	_defaults = {
-		${1:# ... code}
+		'${1:Field}': lambda *a: ${2:Value},
 	}
-	${2}
 
 snippet _ _description
 	_description = ${1:Object description}
