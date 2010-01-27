@@ -26,6 +26,8 @@ snippet select
 
 snippet sep
 	<separator string="${1:Label}" colspan="${2:4}"/>
+snippet separator
+	<separator string="${1:Label}" colspan="${2:4}"/>
 
 snippet group
 	<group colspan="${1:4}">
@@ -94,27 +96,51 @@ snippet menuitem Name
 
 snippet view form
 	<record id="view_${1:model}_form" model="ir.ui.view">
-	    <field name="name">${2:Name}</field>
-	    <field name="model">${3:Model}</field>
+	    <field name="name">$2.form</field>
+	    <field name="model">${2:Model}</field>
 	    <field name="type">form</field>
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
-		<form string="${4:Label}">
-		    <field name="${5:name}" select="1"/>
+		<form string="${3:Label}">
+		    <field name="${4:name}" select="1"/>
 		</form>
 	    </field>
 	</record>
 
 snippet view tree
 	<record id="view_${1:model}_tree" model="ir.ui.view">
-	    <field name="name">${2:Name}</field>
-	    <field name="model">${3:Model}</field>
+	    <field name="name">$2.tree</field>
+	    <field name="model">${2:Model}</field>
 	    <field name="type">tree</field>
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
-		<tree string="${4:Label}">
-		    <field name="${5:name}"/>
+		<tree string="${3:Label}">
+		    <field name="${4:name}"/>
 		</tree>
 	    </field>
 	</record>
 
+snippet view both (tree, form)
+	<record id="view_${1:model}_tree" model="ir.ui.view">
+	    <field name="name">$2.tree</field>
+	    <field name="model">${2:Model}</field>
+	    <field name="type">tree</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<tree string="${3:Label}">
+		    <field name="${4:name}"/>
+		</tree>
+	    </field>
+	</record>
+	
+	<record id="view_$1_form" model="ir.ui.view">
+	    <field name="name">$2.form</field>
+	    <field name="model">$2</field>
+	    <field name="type">form</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<form string="$3">
+		    <field name="$4" select="1"/>
+		</form>
+	    </field>
+	</record>
