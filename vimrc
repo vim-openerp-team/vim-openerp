@@ -74,6 +74,8 @@ au! BufRead,BufNewFile *.sass set ft=sass
 au! BufRead,BufNewFile .openeerprc set ft=cfg
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+" Delete space in end file on write file
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 let g:load_doxygen_syntax=1
 
