@@ -240,6 +240,8 @@ snippet func on_change
 		'field_2': res2
 	    }
 
+snippet read
+	self.read(cr, uid, ids, ['${1:field}'], context=context)
 snippet search
 	self.search(cr, uid, [('${1:state}','${2:=}','${3:done}')], context=context)
 
