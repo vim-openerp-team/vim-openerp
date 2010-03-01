@@ -305,6 +305,9 @@ snippet _ _sql_constraints
 snippet _ _table
 	_table = '${1:Table name in PostgreSQL}'
 
+snippet !context
+	if not context:
+	    context = {}
 #
 # Other python declaration
 #
