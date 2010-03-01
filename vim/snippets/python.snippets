@@ -31,7 +31,6 @@ snippet cl
 			${5:super($1, self).__init__()}
 			self.$4 = $4
 			${6}
-
 snippet copyright
 	##############################################################################
 	#
@@ -55,14 +54,12 @@ snippet copyright
 	#
 	##############################################################################
 	${7}
-
 snippet config
 	# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 # this snippet is usefull to clear the rule cache
 # specialy with OpenObject 5.2 and multi company
 snippet rule
 	self.pool.get('ir.rule').domain_get.clear_cache(cr.dbname)
-
 #
 # Define class for OpenObject
 #
@@ -77,7 +74,6 @@ snippet oo Open Object\Model
 	
 	$1()
 	
-
 snippet ooi Open Object\Model
 	class ${1:ClassName}(osv.osv):
 		_inherit = '${2:ObjectName}'
@@ -88,7 +84,6 @@ snippet ooi Open Object\Model
 	
 	$1()
 	
-
 snippet oom Open Object\Wizard
 	class ${1:ClassName}(osv.osv_memory):
 		_name = '${2:ObjectName}'
@@ -100,7 +95,6 @@ snippet oom Open Object\Wizard
 
 	$1()
 	
-
 #
 # Define type of fields
 #
@@ -136,7 +130,6 @@ snippet fields fields.related
 snippet fields fields.property
 	'${1:fieldname}': fields.property('${2:object}', method=${3:True}, 
 			    string='${4:label}', type='${5:many2one}', ${6}),
-
 # Attribute for fields
 snippet domain
 	domain=[('${1:state}','${2:=}','${3:done}')]
@@ -154,7 +147,6 @@ snippet ondel OnDelete Set Null
 	ondelete='set null'
 snippet store
 	store=True,
-
 #
 # Define function in osv.osv
 #
@@ -164,46 +156,38 @@ snippet func def read
 	    #TODO : process on result
 	    return res
 	${2}
-
 snippet func def create
 	def create(self, cr, uid, values, context=None):
 	    return super(${1:ClassName}, self).create(cr, uid, values, context=context)
 	${2}
-
 snippet func def write
 	def write(self, cr, uid, ids, values, context=None):
 	    return super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
 	${2}
-
 snippet func def unlink
 	def unlink(self, cr, uid, ids, context=None):
 	    #TODO: process before delete resource
 	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
 	    return res
 	${2}
-
 snippet func def copy
 	def copy(self, cr, uid, id, default=None, context=None):
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
 	${2}
-
 snippet func def default_get
 	def default_get(self, cr, user, fields_list, context=None):
 	    values = {}
 	    return values
 	${1}
-
 snippet func def fields_get
 	def fields_get(self, cr, user, fields=None, context=None):
 	    return super(${1:ClassName}, self).fields_get(cr, user, fields, context, read_access)
 	${2}
-
 snippet func def init
 	def init(self, cr):
 	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
 		    )""")
 	${2}
-
 snippet func def _name_get
 	def name_get(self, cr, user, ids, context=None):
 	    #TODO : search on name field or _res_name fields
@@ -213,7 +197,6 @@ snippet func def _name_get
 	    res = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
 	    return res
 	${2}
-
 snippet func def _name_search
 	def name_search(self, cr, user, name, args=None, operator='ilike', context=None, limit=80):
 	    #TODO: make a search on specific fields and get ids
@@ -228,7 +211,6 @@ snippet func def _name_search
 	        ids = self.search(cr, user, [('name',operator,name)]+ args, limit=limit)
 	    return self.name_get(cr, user, ids, context=context)
 	${2}
-
 snippet func on_change
 	def onchange_${1:fields}(self, cr, user, $1, context=None):
 	    #TODO : compute new values from the db/system 
@@ -239,27 +221,21 @@ snippet func on_change
 		'field_1': res1
 		'field_2': res2
 	    }
-
 snippet read
 	self.read(cr, uid, ids, ['${1:field}'], context=context)
 snippet search
 	self.search(cr, uid, [('${1:state}','${2:=}','${3:done}')], context=context)
-
 snippet create
 	id = self.create(cr, uid, ${1:vals}, context=context)
-
 snippet write
 	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)
-
 snippet unlink
 	self.unlink(cr, uid, ${1:ids}, context=context)
-
 #
 # Define all variables in osv.osv begin by _
 #
 snippet _ _auto
 	_auto = False
-
 snippet _ _columns
 	_columns = {
 		${1:# ... code}
@@ -275,38 +251,28 @@ snippet _ _constraints
 	_constraints = [
 	    ($1, 'Error: Invalid Message', ['${2:field_name}']),
 	]
-
 snippet _ _date_name
 	_date_name='${1:Date field}'
-
 snippet _ _defaults
 	_defaults = {
 		'${1:Field}': lambda *a: ${2:Value},
 	}
-
 snippet _ _description
 	_description = ${1:Object description}
-
 snippet _ _order
 	_order = '${1:Field name to order}'
-
 snippet _ _parent_store
 	_parent_store = ${1:False}
-
 snippet _ _rec_name
 	_rec_name = '${1:Field name}'
-
 snippet _ _sequence
 	_sequence = '${1:Field name use as sequence}'
-
 snippet _ _sql_constraints
 	_sql_constraints = [
 	    ('${1:Field name}_uniq', 'unique ($1)', 'The $1 of the OpenERPModel must be unique !'),
 	]
-
 snippet _ _table
 	_table = '${1:Table name in PostgreSQL}'
-
 snippet !context
 	if not context:
 	    context = {}
