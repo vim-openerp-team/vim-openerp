@@ -273,14 +273,24 @@ snippet _ _sql_constraints
 	]
 snippet _ _table
 	_table = '${1:Table name in PostgreSQL}'
-snippet !context
-	if not context:
-	    context = {}
+snippet . search
+	.search(cr, uid, ${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None}, context=${5:context})${6}
+snippet . browse
+	.browse(cr, uid, ${1:ids}, context=${2:context})${3}
+snippet . read
+	.read(cr, uid, ${1:ids}, ['${2:name}'], context=${3:context})${4}
+snippet . create
+	.create(cr, uid, ${1:vals}, context=${2:context})${3}
+snippet . write
+	.write(cr, uid, ${1:ids}, ${2:vals}, context=${3:context})${4}
 # Usefull tips
 snippet pooler
 	pooler.get_pool(cr.dbname)
 snippet pool
 	pool.get('${1:res.partner}')${2}
+snippet !context
+	if not context:
+	    context = {}
 #
 # Other python declaration
 #
@@ -308,7 +318,7 @@ snippet property
 # Lambda
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
-snippet .
+snippet self.
 	self.${1:method}(${2})
 snippet try Try/Except
 	try:
