@@ -1,20 +1,17 @@
 snippet <?
 	<?xml version="1.0" encoding="UTF-8"?>
-
 snippet oerp
 	<openerp>
 	    <data>
 	    $0
 	    </data>
 	</openerp>
-
 snippet field field
 	<field name="${1:Field}"/>
 snippet field field colspan
 	<field name="${1:Field}" colspan="${2:4}"/>
 snippet field field colspan col
 	<field name="${1:Field}" colspan="${2:4}" col="${3:4}"/>
-
 snippet domain
 	domain="[('${1:state}','${2:=}', ${3:True})]"
 snippet context
@@ -23,46 +20,36 @@ snippet attrs
 	attrs="{'${1:required}': [('${2:state}','${3:=}', ${4:'value'})]}"
 snippet select
 	select="1"
-
 snippet sep
 	<separator string="${1:Label}" colspan="${2:4}"/>
 snippet separator
 	<separator string="${1:Label}" colspan="${2:4}"/>
-
 snippet group
 	<group colspan="${1:4}">
 	    $0
 	</group>
-
 snippet notebook
 	<notebook>
 	    <page string="${1:Label}">
 		$0
 	    </page>
 	</notebook>
-
 snippet page
 	<page string="${1:Label}">
 	    $0
 	</page>
-
 snippet label
 	<label string="${1:Label}"/>
-
 snippet newline
 	<newline/>
-
 snippet record
 	<record id="${1:ir_model_data}" model="${2:Model}">
 	    $0
 	</record>
-
 snippet ref
 	ref="${1:ir_model_data}"
-
 snippet eval
 	eval="${1:Value}"
-
 snippet nol
 	nolabel="1" ${1}
 snippet nolabel
@@ -73,26 +60,21 @@ snippet required
 	required="1"
 snippet pos
 	position="${1:inside}"
-
 snippet mode
 	mode="tree,form"
-
 snippet tree
 	<tree string="${1:Label}">
 	    $0
 	</tree>
-
 snippet form
 	<form string="${1:Label}">
 	    $0
 	</form>
-
 snippet menuitem Action
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    action="action_${4:Action}"/>
-
 snippet menuitem Name
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
@@ -115,7 +97,6 @@ snippet view form
 		</form>
 	    </field>
 	</record>
-
 snippet view tree
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
@@ -128,7 +109,6 @@ snippet view tree
 		</tree>
 	    </field>
 	</record>
-
 snippet view both (tree, form)
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
