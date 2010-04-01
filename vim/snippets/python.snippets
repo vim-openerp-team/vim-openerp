@@ -276,6 +276,11 @@ snippet _ _table
 snippet !context
 	if not context:
 	    context = {}
+# Usefull tips
+snippet pooler
+	pooler.get_pool(cr.dbname)
+snippet pool
+	pool.get('${1:res.partner}')
 #
 # Other python declaration
 #
