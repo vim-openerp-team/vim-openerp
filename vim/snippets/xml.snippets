@@ -67,7 +67,10 @@ snippet nol
 	nolabel="1" ${1}
 snippet nolabel
 	nolabel="1" ${0}
-
+snippet readonly
+	readonly="1" ${1}
+snippet required
+	required="1"
 snippet pos
 	position="${1:inside}"
 
@@ -95,7 +98,11 @@ snippet menuitem Name
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    name="${4:Label}"/>
-
+snippet wizard
+	<wizard id="wizard_${1:name}"
+	    string="${2:label}"
+	    model="${3:ir.model}"
+	    name="${4:wizard_name}"/>
 snippet view form
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
