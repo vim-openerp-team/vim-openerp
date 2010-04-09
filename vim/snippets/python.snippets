@@ -130,6 +130,8 @@ snippet fields fields.related
 snippet fields fields.property
 	'${1:fieldname}': fields.property('${2:object}', method=${3:True}, 
 			    string='${4:label}', type='${5:many2one}', ${6}),
+snippet fields fields.text
+	'${1:fieldname}': fields.text('${2:Label}', ${4}),
 # Attribute for fields
 snippet domain
 	domain=[('${1:state}','${2:=}','${3:done}')]
