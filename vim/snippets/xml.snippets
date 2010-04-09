@@ -133,3 +133,9 @@ snippet view both (tree, form)
 		</form>
 	    </field>
 	</record>
+snippet act_window
+	<act_window id="act_${1:ir_model_data}"
+	    name="${2:Name}"
+	    res_model="${3:destination_model}"
+	    src_model="${4:source_model}"
+	    domain="[('${5:field}', '${6:operator}', ${7:active_id})]"/>
