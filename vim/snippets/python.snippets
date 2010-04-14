@@ -296,6 +296,13 @@ snippet !context
 	if not context:
 	    context = {}
 #
+# Usefull Snippet
+#
+snippet active
+	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),
+snippet sequence
+	'sequence': fields.integer('${Sequence}'),
+#
 # Other python declaration
 #
 snippet fm
