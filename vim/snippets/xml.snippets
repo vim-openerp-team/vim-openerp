@@ -16,8 +16,12 @@ snippet domain
 	domain="[('${1:state}','${2:=}', ${3:True})]"
 snippet context
 	context="{}"
-snippet attrs
+snippet attrs required
 	attrs="{'${1:required}': [('${2:state}','${3:=}', ${4:'value'})]}"
+snippet attrs readonly
+	attrs="{'${1:readonly}': [('${2:state}','${3:=}', ${4:'value'})]}"
+snippet attrs invisible
+	attrs="{'${1:invisible}': [('${2:state}','${3:=}', ${4:'value'})]}"
 snippet select
 	select="1"
 snippet sep
