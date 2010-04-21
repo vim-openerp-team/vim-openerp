@@ -293,7 +293,7 @@ snippet pooler
 snippet pool
 	pool.get('${1:res.partner}')${2}
 snippet !context
-	if not context:
+	if context is None:
 	    context = {}
 #
 # Usefull Snippet
