@@ -302,6 +302,11 @@ snippet active
 	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),
 snippet sequence
 	'sequence': fields.integer('${Sequence}'),
+snippet logger
+	import netsvc
+	logger = netsvc.Logger()
+snippet notify
+	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}') ${4}
 #
 # Other python declaration
 #
