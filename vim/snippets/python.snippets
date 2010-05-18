@@ -287,6 +287,24 @@ snippet . write
 	.write(cr, uid, ${1:ids}, ${2:vals}, context=${3:context})${4}
 snippet . unlink
 	.unlink(cr, uid, ${1:ids}, context=${2:context})${3}
+###
+## Cursor
+snippet cr cr.execute()
+	cr.execute("""${1:Query}""")
+snippet cr cr.commit()
+	cr.commit()
+snippet cr cr.rollback()
+	cr.rollback()
+snippet cr cr.close()
+	cr.close()
+snippet cr cr.autocommit()
+	cr.autocommit(${1:True})
+snippet cr cr.fetchall()
+	cr.fetchall()
+snippet cr cr.dictfetchall()
+	cr.dictfetchall()
+snippet cr cr.fetchone()
+	cr.fetchone()
 # Usefull tips
 snippet pooler
 	pooler.get_pool(cr.dbname)
@@ -302,6 +320,11 @@ snippet active
 	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),
 snippet sequence
 	'sequence': fields.integer('${Sequence}'),
+snippet logger
+	import netsvc
+	logger = netsvc.Logger()
+snippet notify
+	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}') ${4}
 #
 # Other python declaration
 #
