@@ -263,6 +263,24 @@ snippet func on_change
 		'field_1': res1
 		'field_2': res2
 	    }
+snippet func fields_view_get
+	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
+	    """
+	    Comment here
+	    """
+	    # use lxml to compose the arch XML
+	    arch = ${1:XML HERE}
+	    fields = ${2:FIELDS HERE}
+	    tb = {'print': [], 'action': [], 'relate': []}
+	    result = {
+		'arch': arch,
+		'fields': fields,
+		'toolbar': tb,
+	    }
+	    return result
+###
+## Common method define in osv.osv
+##
 snippet read
 	self.read(cr, uid, ids, ['${1:field}'], context=context)
 snippet search
