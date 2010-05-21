@@ -273,6 +273,8 @@ snippet write
 	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)
 snippet unlink
 	self.unlink(cr, uid, ${1:ids}, context=context)
+snippet perm_read
+	self.perm_read(cr, uid, [${1:id}], context=context)
 #
 # Define all variables in osv.osv begin by _
 #
@@ -315,6 +317,10 @@ snippet _ _sql_constraints
 	]
 snippet _ _table
 	_table = '${1:Table name in PostgreSQL}'
+snippet _ _sql
+	_sql = """${1:CREATE TABLE .....}"""
+snippet _ _log_access
+	_log_access = False
 snippet . search
 	.search(cr, uid, ${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None}, context=${5:context})${6}
 snippet . browse
