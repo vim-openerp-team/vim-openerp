@@ -147,6 +147,10 @@ snippet ondel OnDelete Cascade
 	ondelete='cascade',
 snippet ondel OnDelete Set Null
 	ondelete='set null'
+snippet ondelete OnDelete Cascade
+	ondelete='cascade',
+snippet ondelete OnDelete Set Null
+	ondelete='set null'
 snippet store
 	store=True,
 #
@@ -154,51 +158,77 @@ snippet store
 #
 snippet func def read
 	def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
-	    #TODO : process on result
+	    """
+	    ${2:Comment this}
+	    """
 	    res = super(${1:ClassName}, self).read(cr, uid, ids, fields, context=context)
+	    ${3}
 	    return res
-	${2}
 snippet func def create
 	def create(self, cr, uid, values, context=None):
-	    #TODO : process on result
-	    return super(${1:ClassName}, self).create(cr, uid, values, context=context)
-	${2}
+	    """
+	    ${2:Comment this}
+	    """
+	    id = super(${1:ClassName}, self).create(cr, uid, values, context=context)
+	    ${3}
+	    return id
 snippet func def write
 	def write(self, cr, uid, ids, values, context=None):
+	    """
+	    ${2:Comment this}
+	    """
 	    #TODO : process on result
-	    return super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
-	${2}
+	    res = super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
+	    ${3}
+	    return res
 snippet func def unlink
 	def unlink(self, cr, uid, ids, context=None):
+	    """
+	    ${2:Comment this}
+	    """
 	    #TODO: process before delete resource
+	    ${3}
 	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
 	    return res
-	${2}
 snippet func def copy
 	def copy(self, cr, uid, id, default=None, context=None):
+	    """
+	    ${2:Comment this}
+	    """
 	    #TODO : process on result
+	    ${3}
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
-	${2}
 snippet func def default_get
 	def default_get(self, cr, uid, fields_list, context=None):
+	    """
+	    ${1:Comment this}
+	    """
 	    #TODO : process on result
 	    values = {}
+	    ${2}
 	    return values
-	${1}
 snippet func def fields_get
 	def fields_get(self, cr, uid, fields=None, context=None):
+	    """
+	    ${2:Comment this}
+	    """
 	    #TODO : process on result
+	    ${3}
 	    return super(${1:ClassName}, self).fields_get(cr, uid, fields, context, read_access)
-	${2}
 snippet func def init
 	def init(self, cr):
+	    """
+	    ${2:Comment this}
+	    """
 	    #TODO : process on result
 	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
+			${3:SELECT...}
 		    )""")
-	${2}
 snippet func def name_get
 	def name_get(self, cr, uid, ids, context=None):
-	    #TODO : search on name field or _res_name fields
+	    """
+	    ${1:Comment this}
+	    """
 	    #and make a result [(id, name), (id, name), ...] 
 	    if not context:
 		context = {}
@@ -207,7 +237,9 @@ snippet func def name_get
 	${2}
 snippet func def name_search
 	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=80):
-	    #TODO: make a search on specific fields and get ids
+	    """
+	    ${2:Comment this}
+	    """
 	    if not args:
 	        args=[]
 	    if not context:
@@ -218,13 +250,15 @@ snippet func def name_search
 	    if not ids:
 	        ids = self.search(cr, uid, [('name',operator,name)]+ args, limit=limit)
 	    return self.name_get(cr, uid, ids, context=context)
-	${2}
+	${3}
 snippet func on_change
 	def onchange_${1:fields}(self, cr, uid, $1, context=None):
-	    #TODO : compute new values from the db/system 
+	    """
+	    ${2:Comment this/compute new values from the db/system}
+	    """
 	    if not context:
 		context = {}
-	    $0
+	    ${3}
 	    return {
 		'field_1': res1
 		'field_2': res2
