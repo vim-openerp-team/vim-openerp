@@ -383,7 +383,7 @@ snippet !context
 snippet active
 	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),
 snippet sequence
-	'sequence': fields.integer('${Sequence}'),
+	'sequence': fields.integer('${1:Sequence}'),
 snippet logger
 	import netsvc
 	logger = netsvc.Logger()
