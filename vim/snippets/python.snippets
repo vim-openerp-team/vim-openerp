@@ -132,6 +132,8 @@ snippet fields fields.property
 			    string='${4:label}', type='${5:many2one}', ${6}),
 snippet fields fields.text
 	'${1:fieldname}': fields.text('${2:Label}', ${4}),
+snippet fields fields.binary
+	'${1:fieldname}': fields.binary('${2:Label}', ${4}),
 # Attribute for fields
 snippet domain
 	domain=[('${1:state}','${2:=}','${3:done}')]
@@ -154,35 +156,75 @@ snippet store
 #
 snippet func def read
 	def read(self, cr, user, ids, fields=None, context=None, load='_classic_read'):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
 	    res = super(${1:ClassName}, self).read(cr, user, ids, fields, context=context)
 	    #TODO : process on result
 	    return res
 	${2}
 snippet func def create
 	def create(self, cr, uid, values, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
+	    #TODO : process on result
 	    return super(${1:ClassName}, self).create(cr, uid, values, context=context)
 	${2}
 snippet func def write
 	def write(self, cr, uid, ids, values, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
+	    #TODO : process on result
 	    return super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
 	${2}
 snippet func def unlink
 	def unlink(self, cr, uid, ids, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
 	    #TODO: process before delete resource
 	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
 	    return res
 	${2}
 snippet func def copy
 	def copy(self, cr, uid, id, default=None, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
+	    #TODO : process on result
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
 	${2}
 snippet func def default_get
 	def default_get(self, cr, user, fields_list, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
+	    #TODO : process on result
 	    values = {}
 	    return values
 	${1}
 snippet func def fields_get
 	def fields_get(self, cr, user, fields=None, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
+	    #TODO : process on result
 	    return super(${1:ClassName}, self).fields_get(cr, user, fields, context, read_access)
 	${2}
 snippet func def init
@@ -192,20 +234,31 @@ snippet func def init
 	${2}
 snippet func def _name_get
 	def name_get(self, cr, user, ids, context=None):
+	    """
+		#TODO make doc string
+	    """
+	    if context is None:
+		context = {}
+	    if not len(ids):
+		return []
+	    reads = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
+	    res = []
+	    for read in reads:
+		res.append( ( read['id'], read[self._rec_name]) )
 	    #TODO : search on name field or _res_name fields
 	    #and make a result [(id, name), (id, name), ...] 
-	    if not context:
-		context = {}
-	    res = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
 	    return res
 	${2}
 snippet func def _name_search
 	def name_search(self, cr, user, name, args=None, operator='ilike', context=None, limit=80):
+	    """
+		#TODO make doc string
+	    """
 	    #TODO: make a search on specific fields and get ids
-	    if not args:
+	    if args is None:
 	        args=[]
-	    if not context:
-	        context={}
+	    if context is None:
+	        context = {}
 	    ids = []
 	    if name:
 	        ids = self.search(cr, user, [('code','ilike',name)]+ args, limit=limit)
@@ -214,9 +267,12 @@ snippet func def _name_search
 	    return self.name_get(cr, user, ids, context=context)
 	${2}
 snippet func on_change
-	def onchange_${1:fields}(self, cr, user, $1, context=None):
+	def onchange_${1:fields}(self, cr, uid, ids, $1, context=None):
+	    """
+		#TODO make doc string
+	    """
 	    #TODO : compute new values from the db/system 
-	    if not context:
+	    if context is None:
 		context = {}
 	    $0
 	    return {
@@ -246,8 +302,8 @@ snippet _ _columns
 snippet _ _constraints
 	def ${1:_check_method}(self, cr, user, ids, context=None):
 	    #TODO : check condition and return boolean accordingly
-	    if not context:
-		context={}
+	    if not context is None:
+		context = {}
 	    return True
 	
 	_constraints = [
