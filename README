@@ -22,3 +22,8 @@ For using Bicycle Repair Man, a Refactoring Tool for Python
 $ sudo aptitude install bicyclerepair
 
 $ vim-addons install python_bike
+
+
+Adding helptag in vim 
+
+:helptags ~/.vim/doc
