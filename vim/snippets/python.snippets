@@ -134,6 +134,8 @@ snippet fields fields.text
 	'${1:fieldname}': fields.text('${2:Label}', ${4}),
 snippet fields fields.binary
 	'${1:fieldname}': fields.binary('${2:Label}', ${4}),
+snippet fields fields.reference
+	'${1:fieldname}': fields.reference('${2:Label}',selection=${3:[('','')]}, size=128, ${4}),
 # Attribute for fields
 snippet domain
 	domain=[('${1:state}','${2:=}','${3:done}')]
