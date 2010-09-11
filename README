@@ -9,7 +9,7 @@ Add packages:
 - vim-python
 - exuberant-ctags
 
- $ sudo apt-get install exuberant-ctags
+ $ sudo aptitude install exuberant-ctags
 
 
 " Include OpenObject Configuration
@@ -17,4 +17,13 @@ if filereadable($HOME."/.vim/openobjectrc")
   source $HOME/.vim/openobjectrc
 endif
 
+For using Bicycle Repair Man, a Refactoring Tool for Python
 
+$ sudo aptitude install bicyclerepair
+
+$ vim-addons install python_bike
+
+
+Adding helptag in vim 
+
+:helptags ~/.vim/doc

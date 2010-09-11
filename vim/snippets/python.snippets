@@ -1,5 +1,5 @@
 snippet #!
-	#!/usr/bin/python
+	#!/usr/bin/env python
 snippet coding
 	# -*- coding: ${1:utf-8} -*-
 snippet imp
@@ -143,11 +143,17 @@ snippet readonly
 	readonly=True,
 snippet required
 	required=True,
+snippet translate
+	translate=True,
 snippet select
 	select=True,
 snippet ondel OnDelete Cascade
 	ondelete='cascade',
 snippet ondel OnDelete Set Null
+	ondelete='set null'
+snippet ondelete OnDelete Cascade
+	ondelete='cascade',
+snippet ondelete OnDelete Set Null
 	ondelete='set null'
 snippet store
 	store=True,
@@ -158,101 +164,117 @@ snippet func def read
 	def read(self, cr, user, ids, fields=None, context=None, load='_classic_read'):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    res = super(${1:ClassName}, self).read(cr, user, ids, fields, context=context)
 	    #TODO : process on result
+	    ${3}
 	    return res
-	${2}
 snippet func def create
 	def create(self, cr, uid, values, context=None):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    #TODO : process on result
-	    return super(${1:ClassName}, self).create(cr, uid, values, context=context)
-	${2}
+	    id = super(${1:ClassName}, self).create(cr, uid, values, context=context)
+	    ${3}
+	    return id
 snippet func def write
 	def write(self, cr, uid, ids, values, context=None):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    #TODO : process on result
-	    return super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
-	${2}
+	    res = super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
+	    ${3}
+	    return res
 snippet func def unlink
 	def unlink(self, cr, uid, ids, context=None):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    #TODO: process before delete resource
+	    ${3}
 	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
 	    return res
-	${2}
 snippet func def copy
 	def copy(self, cr, uid, id, default=None, context=None):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    #TODO : process on result
+	    ${3}
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
-	${2}
 snippet func def default_get
 	def default_get(self, cr, user, fields_list, context=None):
 	    """
 		#TODO make doc string
+		${1:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    #TODO : process on result
 	    values = {}
+	    ${2}
 	    return values
-	${1}
 snippet func def fields_get
 	def fields_get(self, cr, user, fields=None, context=None):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    #TODO : process on result
-	    return super(${1:ClassName}, self).fields_get(cr, user, fields, context, read_access)
-	${2}
+	    ${3}
+	    return super(${1:ClassName}, self).fields_get(cr, uid, fields, context, read_access)
 snippet func def init
 	def init(self, cr):
+	    """
+	    ${2:Comment this}
+	    """
+	    #TODO : process on result
 	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
+			${3:SELECT...}
 		    )""")
 	${2}
 snippet func def _name_get
 	def name_get(self, cr, user, ids, context=None):
 	    """
 		#TODO make doc string
+		${1:Comment this}
 	    """
 	    if context is None:
 		context = {}
 	    if not len(ids):
 		return []
-	    reads = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
-	    res = []
-	    for read in reads:
-		res.append( ( read['id'], read[self._rec_name]) )
 	    #TODO : search on name field or _res_name fields
 	    #and make a result [(id, name), (id, name), ...] 
+	    reads = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
+	    res = []
+	    ${2}
+	    for read in reads:
+		res.append( ( read['id'], read[self._rec_name]) )
 	    return res
-	${2}
 snippet func def _name_search
 	def name_search(self, cr, user, name, args=None, operator='ilike', context=None, limit=80):
 	    """
 		#TODO make doc string
+		${2:Comment this}
 	    """
 	    #TODO: make a search on specific fields and get ids
 	    if args is None:
@@ -261,24 +283,43 @@ snippet func def _name_search
 	        context = {}
 	    ids = []
 	    if name:
-	        ids = self.search(cr, user, [('code','ilike',name)]+ args, limit=limit)
+	        ids = self.search(cr, uid, [('code','ilike',name)]+ args, limit=limit)
 	    if not ids:
-	        ids = self.search(cr, user, [('name',operator,name)]+ args, limit=limit)
-	    return self.name_get(cr, user, ids, context=context)
-	${2}
+	        ids = self.search(cr, uid, [('name',operator,name)]+ args, limit=limit)
+	    return self.name_get(cr, uid, ids, context=context)
+	    ${3}
 snippet func on_change
 	def onchange_${1:fields}(self, cr, uid, ids, $1, context=None):
 	    """
 		#TODO make doc string
+		${2:Comment this/compute new values from the db/system}
 	    """
 	    #TODO : compute new values from the db/system 
 	    if context is None:
 		context = {}
-	    $0
+	    ${3}
 	    return {
 		'field_1': res1
 		'field_2': res2
 	    }
+snippet func fields_view_get
+	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
+	    """
+	    Comment here
+	    """
+	    # use lxml to compose the arch XML
+	    arch = ${1:XML HERE}
+	    fields = ${2:FIELDS HERE}
+	    tb = {'print': [], 'action': [], 'relate': []}
+	    result = {
+		'arch': arch,
+		'fields': fields,
+		'toolbar': tb,
+	    }
+	    return result
+###
+## Common method define in osv.osv
+##
 snippet read
 	self.read(cr, uid, ids, ['${1:field}'], context=context)
 snippet search
@@ -289,6 +330,8 @@ snippet write
 	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)
 snippet unlink
 	self.unlink(cr, uid, ${1:ids}, context=context)
+snippet perm_read
+	self.perm_read(cr, uid, [${1:id}], context=context)
 #
 # Define all variables in osv.osv begin by _
 #
@@ -300,7 +343,7 @@ snippet _ _columns
 	}
 	${2}
 snippet _ _constraints
-	def ${1:_check_method}(self, cr, user, ids, context=None):
+	def ${1:_check_method}(self, cr, uid, ids, context=None):
 	    #TODO : check condition and return boolean accordingly
 	    if not context is None:
 		context = {}
@@ -331,6 +374,10 @@ snippet _ _sql_constraints
 	]
 snippet _ _table
 	_table = '${1:Table name in PostgreSQL}'
+snippet _ _sql
+	_sql = """${1:CREATE TABLE .....}"""
+snippet _ _log_access
+	_log_access = False
 snippet . search
 	.search(cr, uid, ${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None}, context=${5:context})${6}
 snippet . browse
@@ -343,6 +390,24 @@ snippet . write
 	.write(cr, uid, ${1:ids}, ${2:vals}, context=${3:context})${4}
 snippet . unlink
 	.unlink(cr, uid, ${1:ids}, context=${2:context})${3}
+###
+## Cursor
+snippet cr cr.execute()
+	cr.execute("""${1:Query}""")
+snippet cr cr.commit()
+	cr.commit()
+snippet cr cr.rollback()
+	cr.rollback()
+snippet cr cr.close()
+	cr.close()
+snippet cr cr.autocommit()
+	cr.autocommit(${1:True})
+snippet cr cr.fetchall()
+	cr.fetchall()
+snippet cr cr.dictfetchall()
+	cr.dictfetchall()
+snippet cr cr.fetchone()
+	cr.fetchone()
 # Usefull tips
 snippet pooler
 	pooler.get_pool(cr.dbname)
@@ -357,7 +422,12 @@ snippet !context
 snippet active
 	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),
 snippet sequence
-	'sequence': fields.integer('${Sequence}'),
+	'sequence': fields.integer('${1:Sequence}'),
+snippet logger
+	import netsvc
+	logger = netsvc.Logger()
+snippet notify
+	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}') ${4}
 #
 # Other python declaration
 #
