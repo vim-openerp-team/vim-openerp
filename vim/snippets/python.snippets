@@ -301,8 +301,10 @@ snippet func on_change
 		context = {}
 	    ${3}
 	    return {
-		'field_1': res1
-		'field_2': res2
+		'value':{
+		    'field_1': res1
+		    'field_2': res2
+		}
 	    }
 snippet func fields_view_get
 	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
