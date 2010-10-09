@@ -496,3 +496,7 @@ snippet ifmain
 # __magic__
 snippet _ __init__
 	__${1:init}__${2}
+snippet ifcontext
+	if context is None:
+	    context = {}
+	${1}
