@@ -163,14 +163,14 @@ snippet store
 # Define function in osv.osv
 #
 snippet func def read
-	def read(self, cr, user, ids, fields=None, context=None, load='_classic_read'):
+	def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
 	    """
 		#TODO make doc string
 		${2:Comment this}
 	    """
 	    if context is None:
 		context = {}
-	    res = super(${1:ClassName}, self).read(cr, user, ids, fields, context=context)
+	    res = super(${1:ClassName}, self).read(cr, uid, ids, fields, context=context)
 	    #TODO : process on result
 	    ${3}
 	    return res
@@ -222,25 +222,24 @@ snippet func def copy
 	    ${3}
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
 snippet func def default_get
-	def default_get(self, cr, user, fields_list, context=None):
+	def default_get(self, cr, uid, fields_list, context=None):
 	    """
-		#TODO make doc string
-		${1:Comment this}
+	    #TODO make doc string
+	    ${1:Comment this}
 	    """
 	    if context is None:
-		context = {}
-	    #TODO : process on result
-	    values = {}
-	    ${2}
+	        context = {}
+	    values = super(${2:ClassName}, self).default_get(cr, uid, fields_list, context=context)
+	    ${3}
 	    return values
 snippet func def fields_get
-	def fields_get(self, cr, user, fields=None, context=None):
+	def fields_get(self, cr, uuid, fields=None, context=None):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    #TODO : process on result
 	    ${3}
 	    return super(${1:ClassName}, self).fields_get(cr, uid, fields, context, read_access)
@@ -255,7 +254,7 @@ snippet func def init
 		    )""")
 	${2}
 snippet func def _name_get
-	def name_get(self, cr, user, ids, context=None):
+	def name_get(self, cr, uid, ids, context=None):
 	    """
 		#TODO make doc string
 		${1:Comment this}
@@ -266,14 +265,14 @@ snippet func def _name_get
 		return []
 	    #TODO : search on name field or _res_name fields
 	    #and make a result [(id, name), (id, name), ...] 
-	    reads = self.read(cr, user, ids, [self._rec_name], context, load='_classic_write')]
+	    reads = self.read(cr, uid, ids, [self._rec_name], context, load='_classic_write')]
 	    res = []
 	    ${2}
 	    for read in reads:
 		res.append( ( read['id'], read[self._rec_name]) )
 	    return res
 snippet func def _name_search
-	def name_search(self, cr, user, name, args=None, operator='ilike', context=None, limit=80):
+	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=80):
 	    """
 		#TODO make doc string
 		${2:Comment this}
