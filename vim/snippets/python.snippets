@@ -165,11 +165,11 @@ snippet store
 snippet func def read
 	def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    res = super(${1:ClassName}, self).read(cr, uid, ids, fields, context=context)
 	    #TODO : process on result
 	    ${3}
@@ -177,11 +177,11 @@ snippet func def read
 snippet func def create
 	def create(self, cr, uid, values, context=None):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    #TODO : process on result
 	    id = super(${1:ClassName}, self).create(cr, uid, values, context=context)
 	    ${3}
@@ -189,11 +189,11 @@ snippet func def create
 snippet func def write
 	def write(self, cr, uid, ids, values, context=None):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    #TODO : process on result
 	    res = super(${1:ClassName}, self).write(cr, uid, ids, values, context=context)
 	    ${3}
@@ -201,11 +201,11 @@ snippet func def write
 snippet func def unlink
 	def unlink(self, cr, uid, ids, context=None):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    #TODO: process before delete resource
 	    ${3}
 	    res = super(${1:ClassName}, self).unlink(cr, uid, ids, context=context)
@@ -213,11 +213,11 @@ snippet func def unlink
 snippet func def copy
 	def copy(self, cr, uid, id, default=None, context=None):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    #TODO : process on result
 	    ${3}
 	    return super(${1:ClassName}, self).copy(cr, uid, id, default, context=context)
@@ -250,32 +250,32 @@ snippet func def init
 	    """
 	    #TODO : process on result
 	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
-			${3:SELECT...}
-		    )""")
+	            ${3:SELECT...})
+	    """)
 	${2}
 snippet func def _name_get
 	def name_get(self, cr, uid, ids, context=None):
 	    """
-		#TODO make doc string
-		${1:Comment this}
+	    #TODO make doc string
+	    ${1:Comment this}
 	    """
 	    if context is None:
-		context = {}
+	        context = {}
 	    if not len(ids):
-		return []
+	        return []
 	    #TODO : search on name field or _res_name fields
 	    #and make a result [(id, name), (id, name), ...] 
 	    reads = self.read(cr, uid, ids, [self._rec_name], context, load='_classic_write')]
 	    res = []
 	    ${2}
 	    for read in reads:
-		res.append( ( read['id'], read[self._rec_name]) )
+	        res.append( ( read['id'], read[self._rec_name]) )
 	    return res
 snippet func def _name_search
 	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=80):
 	    """
-		#TODO make doc string
-		${2:Comment this}
+	    #TODO make doc string
+	    ${2:Comment this}
 	    """
 	    #TODO: make a search on specific fields and get ids
 	    if args is None:
@@ -292,18 +292,18 @@ snippet func def _name_search
 snippet func on_change
 	def onchange_${1:fields}(self, cr, uid, ids, $1, context=None):
 	    """
-		#TODO make doc string
-		${2:Comment this/compute new values from the db/system}
+	    #TODO make doc string
+	    ${2:Comment this/compute new values from the db/system}
 	    """
 	    #TODO : compute new values from the db/system 
 	    if context is None:
-		context = {}
+	        context = {}
 	    ${3}
 	    return {
-		'value':{
-		    'field_1': res1
-		    'field_2': res2
-		}
+	        'value':{
+	            'field_1': res1
+	            'field_2': res2
+	        }
 	    }
 snippet func fields_view_get
 	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
@@ -315,9 +315,9 @@ snippet func fields_view_get
 	    fields = ${2:FIELDS HERE}
 	    tb = {'print': [], 'action': [], 'relate': []}
 	    result = {
-		'arch': arch,
-		'fields': fields,
-		'toolbar': tb,
+	        'arch': arch,
+	        'fields': fields,
+	        'toolbar': tb,
 	    }
 	    return result
 ###
@@ -342,14 +342,14 @@ snippet _ _auto
 	_auto = False
 snippet _ _columns
 	_columns = {
-		${1:# ... code}
+	    ${1:# ... code}
 	}
 	${2}
 snippet _ _constraints
 	def ${1:_check_method}(self, cr, uid, ids, context=None):
 	    #TODO : check condition and return boolean accordingly
 	    if not context is None:
-		context = {}
+	        context = {}
 	    return True
 	
 	_constraints = [
@@ -359,7 +359,7 @@ snippet _ _date_name
 	_date_name='${1:Date field}'
 snippet _ _defaults
 	_defaults = {
-		'${1:Field}': lambda *a: ${2:Value},
+	     '${1:Field}': lambda *a: ${2:Value},
 	}
 snippet _ _description
 	_description = ${1:Object description}
@@ -438,23 +438,23 @@ snippet fm
 # New Function
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		"""${3:docstring for $1}"""
-		${4:pass}
+	    """${3:docstring for $1}"""
+	    ${4:pass}
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		${3}
+	    ${3}
 # New Method
 snippet defs
 	def ${1:mname}(self, ${2:arg}):
-		${3:pass}
+	    ${3:pass}
 # New Property
 snippet property
 	def ${1:foo}():
-		doc = "${2:The $1 property.}"
-		def fget(self):
-			${3:return self._$1}
-		def fset(self, value):
-			${4:self._$1 = value}
+	    doc = "${2:The $1 property.}"
+	    def fget(self):
+	        ${3:return self._$1}
+	    def fset(self, value):
+	        ${4:self._$1 = value}
 # Lambda
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
@@ -462,36 +462,36 @@ snippet self.
 	self.${1:method}(${2})
 snippet try Try/Except
 	try:
-		${1:pass}
+	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
-		${4:raise $3}
+	    ${4:raise $3}
 snippet try Try/Except/Else
 	try:
-		${1:pass}
+	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
-		${4:raise $3}
+	    ${4:raise $3}
 	else:
-		${5:pass}
+	    ${5:pass}
 snippet try Try/Except/Finally
 	try:
-		${1:pass}
+	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
-		${4:raise $3}
+	    ${4:raise $3}
 	finally:
-		${5:pass}
+	    ${5:pass}
 snippet try Try/Except/Else/Finally
 	try:
-		${1:pass}
+	    ${1:pass}
 	except ${2:Exception}, ${3:e}:
-		${4:raise $3}
+	    ${4:raise $3}
 	else:
-		${5:pass}
+	    ${5:pass}
 	finally:
 		${6:pass}
 # if __name__ == '__main__':
 snippet ifmain
 	if __name__ == '__main__':
-		${1:main()}
+	    ${1:main()}
 # __magic__
 snippet _ __init__
 	__${1:init}__${2}
