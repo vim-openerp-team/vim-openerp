@@ -394,6 +394,12 @@ snippet . write
 snippet . unlink
 	.unlink(cr, uid, ${1:ids}, context=${2:context})${3}
 ###
+## define exception
+snippet except raise osv.except_osv(title, message)
+	raise osv.except_osv(_('${1:Error}'), _('${2:Message}'))
+snippet except raise wizard.except_wizard(title, message)
+	raise wizard.except_wizard(_('${1:Error}'), _('${2:Message}'))
+###
 ## Cursor
 snippet cr cr.execute()
 	cr.execute("""${1:Query}""")
