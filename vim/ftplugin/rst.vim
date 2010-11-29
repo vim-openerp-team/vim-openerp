@@ -8,5 +8,5 @@ set makeprg=aap
 
 set tw=0
 
-" vim: ts=8
+" vim: ts=4
 
