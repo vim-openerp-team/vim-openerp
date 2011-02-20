@@ -226,3 +226,27 @@ snippet xpath
 	<xpath expr="/${1:form}" position="${2:after}">
 	    <field name="${3:name}"/>
 	</xpath>
+snippet widget selection
+	widget="selection"
+snippet widget float_time
+	widget="float_time"
+snippet test <test expr=""/>
+	<test expr="len(${1:one2many}) == ${2:1}"/>
+snippet test <test expr=""></test>
+	<test expr="${1:state}">${2:confirmed}</test>
+snippet assert id
+	<assert id="${1:ir_model_data}" model="${2:sale.order}" severity="${3:error}"
+	        string="${4:Text appear when an error raise}">
+		$0
+	</assert>
+snippet assert search
+	<assert search="[('${1:name}','${2:=}','${3:TEXT}')]" model="${4:sale.order}" severity="${5:error}" count="${6:1}"
+	        string="${7:Text appear when an error raise}">
+		$0
+	</assert>
+snippet workflow ref
+	<workflow action="${1:button_confirm}" model="${2:sale.order}" ref="${3:ir_model_data}"/>
+snippet workflow search
+	<workflow action="${1:button_confirm}" model="${2:sale.order}">
+	    <value model="$2" search="[('${3:name}','${4:=}','${5:TEXT}')]"/>
+	</worklow>
