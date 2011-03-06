@@ -65,10 +65,16 @@ inoremap <F3> <ESC>:Dox<CR>
 map<C-F12> <ESC>:set list!<CR>
 map<F12> <ESC>:set wrap!<CR>
 
+map <F9> :!psql -d dbname < % <BAR> less
+
 au BufRead .irbrc set ft=ruby
 au! BufRead,BufNewFile *.haml set ft=haml
 au! BufRead,BufNewFile *.sass set ft=sass
-au! BufRead,BufNewFile .openeerprc set ft=cfg
+au! BufRead,BufNewFile .openerprc set ft=cfg
+
+" PgSQL
+au BufNewFile,BufRead *.pgsql setf pgsql
+au BufRead /tmp/psql.edit.* set syntax=pgsql
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 " Delete space in end file on write file
