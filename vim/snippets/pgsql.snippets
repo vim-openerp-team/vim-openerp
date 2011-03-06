@@ -1,0 +1,40 @@
+snippet function
+	--
+	-- function: $1
+	--
+	-- Arguments:
+	--
+	CREATE OR REPLACE FUNCTION ${1:function_name}(
+		    ${2:argument} ${3:arg_type}
+		) RETURNS ${4:type} AS $${5:ME}$
+		    DECLARE
+			-- Declare variable here
+		    BEGIN
+			${7:query}
+			RETURN 1;
+		    END;
+		$$5$ LANGUAGE 'plpgsql';
+
+	COMMENT ON FUNCTION $1($3) IS '${6:This function is used to ...}';
+snippet begin standard
+	BEGIN
+	    ${1:query}
+	END;
+snippet begin exception
+	BEGIN
+	    ${1:query}
+	EXCEPTION
+	    ${2:WHEN}
+	END;
+snippet if NOT FOUND
+	IF NOT FOUND THEN
+	    ${1:query}
+	END IF;
+snippet if val IS NOT NULL
+	IF ${1:value} IS NOT NULL THEN
+	    ${2:query}
+	END IF;
+snippet comment table
+	COMMENT ON TABLE ${1:table} IS '${2:comment}';
+snippet comment column
+	COMMENT ON COLUMN ${1:table.column} IS '${2:comment}';
