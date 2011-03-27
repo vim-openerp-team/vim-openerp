@@ -66,6 +66,12 @@ snippet if val IS NOT NULL
 	END IF;
 snippet elsif
 	ELSIF ${1:vars} ${2:=} ${3:vals} THEN
+snippet loop
+	LOOP
+	    ${1:query};
+	END LOOP;
+snippet exit
+	EXIT;
 #
 # Define comment on each object
 #
