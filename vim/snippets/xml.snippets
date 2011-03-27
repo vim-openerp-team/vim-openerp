@@ -141,6 +141,18 @@ snippet view tree
 		</tree>
 	    </field>
 	</record>
+snippet view search
+	<record id="view_${1:model}_tree" model="ir.ui.view">
+	    <field name="name">$2.search</field>
+	    <field name="model">${2:Model}</field>
+	    <field name="type">search</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<search string="${3:Label}">
+		    <field name="${4:name}" select="True"/>
+		</search>
+	    </field>
+	</record>
 snippet view both (tree, form)
 	<record id="view_${1:model}_tree" model="ir.ui.view">
 	    <field name="name">$2.tree</field>
