@@ -55,6 +55,9 @@ let t_Co=256
 let g:DoxygenToolkit_commentType="python"
 let g:DoxugenToolkit_briefTag_funcName="yes"
 
+"Value for snippet
+let g:snips_author="First Name, LAST NAME"
+
 au! BufRead,BufNewFile *.rml set ft=xml
 
 "
