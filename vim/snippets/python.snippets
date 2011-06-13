@@ -162,6 +162,17 @@ snippet store
 #
 # Define function in osv.osv
 #
+snippet func def search
+	def search(self, cr, uid, args, offset=0, limit=None, order=None, context=None, count=False):
+	    """
+	    ${1:Comment}
+	    """
+	    if context is None:
+	        context = {}
+	
+	    res = super(${2:ClassName}, self).search(cr, uid, args, offset=offset, limit=limit, order=order, context=context, count=count)
+	    ${3}
+	    return res
 snippet func def read
 	def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
 	    """
