@@ -121,7 +121,41 @@ snippet wizard <wizard/>
 	    string="${2:label}"
 	    model="${3:ir.model}"
 	    name="${4:wizard_name}"/>
-snippet wizard osv_memory
+snippet wizard osv_memory menu
+	<record id="view_${1:model}_form" model="ir.ui.view">
+	    <field name="name">$2.form</field>
+	    <field name="model">${2:Model}</field>
+	    <field name="type">form</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<form string="${3:Label}">
+		    <field name="${4:name}" select="1"/>
+		    <separator string="" colspan="4" />
+		    <group colspan="4" col="6">
+		        <label string ="" colspan="2"/>
+		        <button icon="gtk-cancel" special="cancel" string="Cancel"/>
+		        <button  icon="terp-gtk-go-back-rtl" string="Start" name="${5:_continue}" type="object"/>
+		    </group>
+		</form>
+	    </field>
+	</record>
+	
+	<record model="ir.actions.act_window" id="action_$1_view">
+	    <field name="name">$3</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">$2</field>
+	    <field name="view_type">form</field>
+	    <field name="view_mode">form</field>
+	    <field name="domain">[]</field>
+	    <field name="context">{}</field>
+	    <field name="target">new</field>
+	</record>
+	
+	<menuitem id="menu_$1_wizard"
+	    parent="menu_${2:menu_parent}"
+	    sequence="${3:20}"
+	    action="action_$1_view"/>
+snippet wizard osv_memory toolbar
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
 	    <field name="model">${2:Model}</field>
