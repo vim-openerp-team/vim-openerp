@@ -436,3 +436,7 @@ snippet workflow search
 	<workflow action="${1:button_confirm}" model="${2:sale.order}">
 	    <value model="$2" search="[('${3:name}','${4:=}','${5:TEXT}')]"/>
 	</worklow>
+snippet delete id
+	<delete model="${1:model}" id="${2:ir_model_data}"/>
+snippet delete search
+	<delete model="${1:model}" search="[('${2:field}', '${3:operator}', '${4:value}')]"/>
