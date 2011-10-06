@@ -336,6 +336,8 @@ snippet func fields_view_get
 ##
 snippet read
 	self.read(cr, uid, ids, ['${1:field}'], context=context)
+snippet browse
+	self.browse(cr, uid, ids, context=context)
 snippet search
 	self.search(cr, uid, [('${1:state}','${2:=}','${3:done}')], context=context)
 snippet create
