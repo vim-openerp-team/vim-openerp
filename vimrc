@@ -155,6 +155,8 @@ cabbr td tab delete
 
 map T :TaskList<CR>
 map F :TlistToggle<CR>
+vunmap T
+vunmap F
 
 "
 " Uncomment this if you want to use pylint checker when you save your file
