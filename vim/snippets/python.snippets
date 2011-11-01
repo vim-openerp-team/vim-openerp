@@ -406,6 +406,8 @@ snippet . write
 	.write(cr, uid, ${1:ids}, ${2:vals}, context=${3:context})${4}
 snippet . unlink
 	.unlink(cr, uid, ${1:ids}, context=${2:context})${3}
+snippet . copy
+	.copy(cr, uid, ${1:id}, ${2:default}, context=${3:context})${4}
 ###
 ## define exception
 snippet except raise osv.except_osv(title, message)
