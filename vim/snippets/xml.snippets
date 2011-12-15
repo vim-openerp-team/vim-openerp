@@ -410,9 +410,27 @@ snippet act_window
 	    res_model="${3:destination_model}"
 	    src_model="${4:source_model}"
 	    domain="[('${5:field}', '${6:operator}', ${7:active_id})]"/>
-snippet xpath
-	<xpath expr="/${1:form}" position="${2:after}">
+snippet xpath after
+	<xpath expr="//field[@${1:name}='${2:field}']" position="after">
 	    <field name="${3:name}"/>
+	</xpath>
+snippet xpath before
+	<xpath expr="//field[@${1:name}='${2:field}']" position="before">
+	    <field name="${3:name}"/>
+	</xpath>
+snippet xpath replace
+	<xpath expr="//field[@${1:name}='${2:field}']" position="replace">
+	    <field name="$2"/>
+	</xpath>
+snippet xpath inside
+	<xpath expr="//notebook" position="inside">
+	    <page string="${1:text}">
+	    <field name="${2:name}"/>
+	    </page>
+	</xpath>
+snippet xpath attribute
+	<xpath expr="//field[@${1:name}='${2:field}']" position="attributes">
+	    <attribute name="${3:required}">${4:1}</attribute>
 	</xpath>
 snippet widget selection
 	widget="selection"
