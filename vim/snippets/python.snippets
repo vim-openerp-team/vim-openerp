@@ -450,6 +450,9 @@ snippet sequence
 snippet logger
 	import netsvc
 	logger = netsvc.Logger()
+snippet logging
+	import logging
+	logger = logging.getLogger('${1:module}')
 snippet notify
 	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}') ${4}
 #

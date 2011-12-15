@@ -132,6 +132,12 @@ map <C-j> :py CheckPy()
 
 map <silent><A-Right> :tabnext<CR>
 map <silent><A-Left> :tabprevious<CR>
+map <C-Down> <C-e>
+map <C-Up> <C-y>
+noremap <A-S-Left> <C-w><
+noremap <A-S-Right> <C-w>>
+noremap <A-S-Up> <C-w>+
+noremap <A-S-Down> <C-w>-
 
 map <M-q> :bd<CR>
 
