@@ -316,8 +316,23 @@ snippet func on_change
 	            'field_2': res2
 	        }
 	    }
-snippet func fields_view_get
+snippet func fields_view_get v 5.0
 	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
+	    """
+	    Comment here
+	    """
+	    # use lxml to compose the arch XML
+	    arch = ${1:XML HERE}
+	    fields = ${2:FIELDS HERE}
+	    tb = {'print': [], 'action': [], 'relate': []}
+	    result = {
+	        'arch': arch,
+	        'fields': fields,
+	        'toolbar': tb,
+	    }
+	    return result
+snippet func fields_view_get v 6.0
+	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
 	    """
 	    Comment here
 	    """
