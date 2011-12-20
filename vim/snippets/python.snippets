@@ -541,3 +541,22 @@ snippet ifcontext
 snippet pdb
 	import pdb
 	pdb.set_trace()
+# workflow
+snippet trg trg_write
+	wf_service = netsvc.LocalService("workflow")
+	wf_service.trg_write(uid, '${1:model}', ${2:id}, cr)
+snippet trg trg_trigger
+	wf_service = netsvc.LocalService("workflow")
+	wf_service.trg_trigger(uid, '${1:model}', ${2:id}, cr)
+snippet trg trg_delete
+	wf_service = netsvc.LocalService("workflow")
+	wf_service.trg_delete(uid, '${1:model}', ${2:id}, cr)
+snippet trg trg_create
+	wf_service = netsvc.LocalService("workflow")
+	wf_service.trg_create(uid, '${1:model}', ${2:id}, cr)
+snippet trg trg_validate
+	wf_service = netsvc.LocalService("workflow")
+	wf_service.trg_validate(uid, '${1:model}', ${2:id}, '${3:signal}', cr)
+snippet trg trg_redirect
+	wf_service = netsvc.LocalService("workflow")
+	wf_service.trg_redirect(uid, '${1:model}', ${2:id}, ${3:new id}, cr)
