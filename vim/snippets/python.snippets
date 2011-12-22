@@ -263,7 +263,7 @@ snippet func def init
 	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
 	            ${3:SELECT...})
 	    """)
-	${2}
+	${4}
 snippet func def _name_get
 	def name_get(self, cr, uid, ids, context=None):
 	    """
@@ -286,7 +286,7 @@ snippet func def _name_search
 	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=80):
 	    """
 	    #TODO make doc string
-	    ${2:Comment this}
+	    ${1:Comment this}
 	    """
 	    #TODO: make a search on specific fields and get ids
 	    if args is None:
@@ -299,7 +299,7 @@ snippet func def _name_search
 	    if not ids:
 	        ids = self.search(cr, uid, [('name',operator,name)]+ args, limit=limit)
 	    return self.name_get(cr, uid, ids, context=context)
-	    ${3}
+	    ${2}
 snippet func on_change
 	def onchange_${1:fields}(self, cr, uid, ids, $1, context=None):
 	    """
@@ -350,19 +350,19 @@ snippet func fields_view_get v 6.0
 ## Common method define in osv.osv
 ##
 snippet read
-	self.read(cr, uid, ids, ['${1:field}'], context=context)
+	self.read(cr, uid, ${1:ids}, ['${2:field}'], context=context)${3}
 snippet browse
-	self.browse(cr, uid, ids, context=context)
+	self.browse(cr, uid, ${1:ids}, context=context)${2}
 snippet search
-	self.search(cr, uid, [('${1:state}','${2:=}','${3:done}')], context=context)
+	self.search(cr, uid, [('${1:state}', '${2:=}', '${3:done}')], context=context)${4}
 snippet create
-	id = self.create(cr, uid, ${1:vals}, context=context)
+	id = self.create(cr, uid, ${1:vals}, context=context)${2}
 snippet write
-	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)
+	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)${3}
 snippet unlink
-	self.unlink(cr, uid, ${1:ids}, context=context)
+	self.unlink(cr, uid, ${1:ids}, context=context)${2}
 snippet perm_read
-	self.perm_read(cr, uid, [${1:id}], context=context)
+	self.perm_read(cr, uid, [${1:id}], context=context)${2}
 #
 # Define all variables in osv.osv begin by _
 #
