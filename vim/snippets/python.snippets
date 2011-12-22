@@ -470,7 +470,15 @@ snippet logging
 	import logging
 	logger = logging.getLogger('${1:module}')
 snippet notify
-	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}') ${4}
+	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}')${4}
+snippet log Debug
+	logger.debug('${1}')
+snippet log Info
+	logger.info('${1}')
+snippet log Warning
+	logger.warning('${1}')
+snippet log Error
+	logger.error('${1}')
 #
 # Other python declaration
 #
