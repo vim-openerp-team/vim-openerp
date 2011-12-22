@@ -186,8 +186,7 @@ snippet wizard osv_memory toolbar
 	    <field name="object" eval="1"/>
 	    <field name="key">action</field>
 	    <field name="key2">client_action_multi</field>
-	    <field name="model_id" ref="${5:ir_model_data}"/>
-	    <field name="model">$2</field>
+	    <field name="model">${2:Model to launch wizard}</field>
 	    <field name="value" eval="'ir.actions.act_window,' + str(ref('action_$1_view'))" />
 	</record>
 snippet view form
