@@ -139,7 +139,7 @@ snippet fields fields.reference
 	'${1:fieldname}': fields.reference('${2:Label}', selection=${3:[('', '')]}, size=128, ${5}help='${4:Help note}'),${6}
 # Attribute for fields
 snippet domain
-	domain=[('${1:state}','${2:=}','${3:done}')]
+	domain=[('${1:state}', '${2:=}', '${3:done}')]
 snippet help
 	help='${1:Help about Field}',
 snippet readonly
@@ -296,9 +296,9 @@ snippet func def _name_search
 	        context = {}
 	    ids = []
 	    if name:
-	        ids = self.search(cr, uid, [('code','ilike',name)]+ args, limit=limit)
+	        ids = self.search(cr, uid, [('code', 'ilike', name)] + args, limit=limit)
 	    if not ids:
-	        ids = self.search(cr, uid, [('name',operator,name)]+ args, limit=limit)
+	        ids = self.search(cr, uid, [('name', operator, name)] + args, limit=limit)
 	    return self.name_get(cr, uid, ids, context=context)
 	    ${2}
 snippet func on_change
@@ -307,7 +307,7 @@ snippet func on_change
 	    #TODO make doc string
 	    ${2:Comment this/compute new values from the db/system}
 	    """
-	    #TODO : compute new values from the db/system 
+	    #TODO : compute new values from the db/system
 	    if context is None:
 	        context = {}
 	    ${3}
