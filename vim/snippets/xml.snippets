@@ -73,13 +73,13 @@ snippet eval
 snippet nol
 	nolabel="1" ${1}
 snippet nolabel
-	nolabel="1" ${0}
+	nolabel="1" ${1}
 snippet readonly
 	readonly="1" ${1}
 snippet required
-	required="1"
+	required="1" ${1}
 snippet invisible
-	invisible="1"
+	invisible="1" ${1}
 snippet pos
 	position="${1:inside}"
 snippet position
@@ -136,7 +136,7 @@ snippet wizard osv_memory menu
 		    <group colspan="4" col="6">
 		        <label string ="" colspan="2"/>
 		        <button icon="gtk-cancel" special="cancel" string="Cancel"/>
-		        <button  icon="terp-gtk-go-back-rtl" string="Start" name="${5:_continue}" type="object"/>
+		        <button icon="terp-gtk-go-back-rtl" string="Start" name="${5:_continue}" type="object"/>
 		    </group>
 		</form>
 	    </field>
@@ -186,8 +186,7 @@ snippet wizard osv_memory toolbar
 	    <field name="object" eval="1"/>
 	    <field name="key">action</field>
 	    <field name="key2">client_action_multi</field>
-	    <field name="model_id" ref="${5:ir_model_data}"/>
-	    <field name="model">$2</field>
+	    <field name="model">${2:Model to launch wizard}</field>
 	    <field name="value" eval="'ir.actions.act_window,' + str(ref('action_$1_view'))" />
 	</record>
 snippet view form
@@ -436,6 +435,16 @@ snippet widget selection
 	widget="selection"
 snippet widget float_time
 	widget="float_time"
+snippet widget url
+	widget="url"
+snippet widget progressbar
+	widget="progressbar"
+snippet widget many2many
+	widget="many2many"
+snippet widget one2many_list
+	widget="one2many_list"
+snippet widget password
+	password="1"
 snippet test <test expr=""/>
 	<test expr="len(${1:one2many}) == ${2:1}"/>
 snippet test <test expr=""></test>
@@ -460,3 +469,23 @@ snippet delete id
 	<delete model="${1:model}" id="${2:ir_model_data}"/>
 snippet delete search
 	<delete model="${1:model}" search="[('${2:field}', '${3:operator}', '${4:value}')]"/>
+snippet icon gtk-apply
+	icon="gtk-apply"
+snippet icon gtk-cancel
+	icon="gtk-cancel"
+snippet icon gtk-close
+	icon="gtk-close"
+snippet icon gtk-convert
+	icon="gtk-convert"
+snippet icon gtk-execute
+	icon="gtk-execute"
+snippet icon gtk-go-forward
+	icon="gtk-go-forward"
+snippet icon gtk-jump-to
+	icon="gtk-jump-to"
+snippet icon gtk-media-pause
+	icon="gtk-media-pause"
+snippet icon gtk-ok
+	icon="gtk-ok"
+snippet icon gtk-print
+	icon="gtk-print"

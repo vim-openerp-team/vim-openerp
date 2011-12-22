@@ -99,66 +99,67 @@ snippet oom Open Object\Wizard
 # Define type of fields
 #
 snippet fields fields.char
-	'${1:fieldname}': fields.char('${2:Label}', size=${3:64}, ${4}),
+	'${1:fieldname}': fields.char('${2:Label}', size=${3:64}, ${5}help='${4:Help note}'),${6}
 snippet fields fields.integer
-	'${1:fieldname}': fields.integer('${2:Label}', ${3}),
+	'${1:fieldname}': fields.integer('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.float
-	'${1:fieldname}': fields.float('${2:Label}', ${3}),
+	'${1:fieldname}': fields.float('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.boolean
-	'${1:fieldname}': fields.boolean('${2:Label}', ${3}),
+	'${1:fieldname}': fields.boolean('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.date
-	'${1:fieldname}': fields.date('${2:Label}', ${3}),
+	'${1:fieldname}': fields.date('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.datetime
-	'${1:fieldname}': fields.datetime('${2:Label}', ${3}),
+	'${1:fieldname}': fields.datetime('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.selection
-	'${1:fieldname}': fields.selection(${2:[('','')]}, '${3:Label}', ${4}),
+	'${1:fieldname}': fields.selection(${2:[('', '')]}, '${3:Label}', ${5}help='${4:Help note}'),${6}
 snippet fields fields.many2one
-	'${1:fieldname}_id': fields.many2one('${2:ObjectName}', '${3:Label}', ${4}),
+	'${1:fieldname}_id': fields.many2one('${2:ObjectName}', '${3:Label}', ${5}help='${4:Help note}'),${6}
 snippet fields fields.many2many
-	'${1:fieldname}_ids': fields.many2many('${2:ObjectName}', '${3:TableRel}', '${4:src_id}', '${5:dst_id}', '${6:Label}', ${7}),
+	'${1:fieldname}_ids': fields.many2many('${2:ObjectName}', '${3:TableRel}', '${4:src_id}', '${5:dst_id}', '${6:Label}', ${8}help='${7:Help note}'),${9}
 snippet fields fields.one2many
-	'${1:fieldname}_ids': fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}', ${5}),
+	'${1:fieldname}_ids': fields.one2many('${2:ObjectName}', '${3:fieldname}_id', '${4:Label}', ${6}help='${5:Help note}'),${7}
 snippet fields fields.function
 	'${1:fieldname}': fields.function(${2:FunctionName},
 					    method=${3:True},
 					    string='${4:label}',
 					    type='${5:float}',
-					    store=${6:False}, ${7}),
+					    store=${6:False},${8}
+					    help='${7:Help note}'),${9}
 snippet fields fields.related
-	'${1:fieldname}': fields.related('${2:field in}', '${3:field rel}', type='${4:many2one}', ${5:relation='res.partner'}, 
-					    string='${6:Label}', ${7}),
+	'${1:fieldname}': fields.related('${2:field in}', '${3:field rel}', type='${4:many2one}', ${5:relation='res.partner'},
+					    string='${6:Label}', ${8}help='${7:Help note}'),${9}
 snippet fields fields.property
-	'${1:fieldname}': fields.property('${2:object}', method=${3:True}, 
-			    string='${4:label}', type='${5:many2one}', ${6}),
+	'${1:fieldname}': fields.property('${2:object}', method=${3:True},
+			    string='${4:label}', type='${5:many2one}', ${7}help='${6:Help note}'),${8}
 snippet fields fields.text
-	'${1:fieldname}': fields.text('${2:Label}', ${4}),
+	'${1:fieldname}': fields.text('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.binary
-	'${1:fieldname}': fields.binary('${2:Label}', ${4}),
+	'${1:fieldname}': fields.binary('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.reference
-	'${1:fieldname}': fields.reference('${2:Label}',selection=${3:[('','')]}, size=128, ${4}),
+	'${1:fieldname}': fields.reference('${2:Label}', selection=${3:[('', '')]}, size=128, ${5}help='${4:Help note}'),${6}
 # Attribute for fields
 snippet domain
-	domain=[('${1:state}','${2:=}','${3:done}')]
+	domain=[('${1:state}', '${2:=}', '${3:done}')]
 snippet help
 	help='${1:Help about Field}',
 snippet readonly
-	readonly=True,
+	readonly=True, ${1}
 snippet required
-	required=True,
+	required=True, ${1}
 snippet translate
-	translate=True,
+	translate=True, ${1}
 snippet select
-	select=True,
+	select=True, ${1}
 snippet ondel OnDelete Cascade
-	ondelete='cascade',
+	ondelete='cascade', ${1}
 snippet ondel OnDelete Set Null
-	ondelete='set null'
+	ondelete='set null', ${1}
 snippet ondelete OnDelete Cascade
-	ondelete='cascade',
+	ondelete='cascade', ${1}
 snippet ondelete OnDelete Set Null
-	ondelete='set null'
+	ondelete='set null', ${1}
 snippet store
-	store=True,
+	store=True, ${1}
 #
 # Define function in osv.osv
 #
@@ -263,7 +264,7 @@ snippet func def init
 	    cr.execute("""CREATE OR REPLACE VIEW ${1:View} AS (
 	            ${3:SELECT...})
 	    """)
-	${2}
+	${4}
 snippet func def _name_get
 	def name_get(self, cr, uid, ids, context=None):
 	    """
@@ -286,7 +287,7 @@ snippet func def _name_search
 	def name_search(self, cr, uid, name, args=None, operator='ilike', context=None, limit=80):
 	    """
 	    #TODO make doc string
-	    ${2:Comment this}
+	    ${1:Comment this}
 	    """
 	    #TODO: make a search on specific fields and get ids
 	    if args is None:
@@ -295,18 +296,18 @@ snippet func def _name_search
 	        context = {}
 	    ids = []
 	    if name:
-	        ids = self.search(cr, uid, [('code','ilike',name)]+ args, limit=limit)
+	        ids = self.search(cr, uid, [('code', 'ilike', name)] + args, limit=limit)
 	    if not ids:
-	        ids = self.search(cr, uid, [('name',operator,name)]+ args, limit=limit)
+	        ids = self.search(cr, uid, [('name', operator, name)] + args, limit=limit)
 	    return self.name_get(cr, uid, ids, context=context)
-	    ${3}
+	    ${2}
 snippet func on_change
 	def onchange_${1:fields}(self, cr, uid, ids, $1, context=None):
 	    """
 	    #TODO make doc string
 	    ${2:Comment this/compute new values from the db/system}
 	    """
-	    #TODO : compute new values from the db/system 
+	    #TODO : compute new values from the db/system
 	    if context is None:
 	        context = {}
 	    ${3}
@@ -350,19 +351,19 @@ snippet func fields_view_get v 6.0
 ## Common method define in osv.osv
 ##
 snippet read
-	self.read(cr, uid, ids, ['${1:field}'], context=context)
+	self.read(cr, uid, ${1:ids}, ['${2:field}'], context=context)${3}
 snippet browse
-	self.browse(cr, uid, ids, context=context)
+	self.browse(cr, uid, ${1:ids}, context=context)${2}
 snippet search
-	self.search(cr, uid, [('${1:state}','${2:=}','${3:done}')], context=context)
+	self.search(cr, uid, [('${1:state}', '${2:=}', '${3:done}')], context=context)${4}
 snippet create
-	id = self.create(cr, uid, ${1:vals}, context=context)
+	id = self.create(cr, uid, ${1:vals}, context=context)${2}
 snippet write
-	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)
+	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)${3}
 snippet unlink
-	self.unlink(cr, uid, ${1:ids}, context=context)
+	self.unlink(cr, uid, ${1:ids}, context=context)${2}
 snippet perm_read
-	self.perm_read(cr, uid, [${1:id}], context=context)
+	self.perm_read(cr, uid, [${1:id}], context=context)${2}
 #
 # Define all variables in osv.osv begin by _
 #
@@ -459,9 +460,9 @@ snippet !context
 # Usefull Snippet
 #
 snippet active
-	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),
+	'active': fields.boolean('${1:Active}', help='if check, ${2:this object is always available}'),${3}
 snippet sequence
-	'sequence': fields.integer('${1:Sequence}'),
+	'sequence': fields.integer('${1:Sequence}'),${2}
 snippet logger
 	import netsvc
 	logger = netsvc.Logger()
@@ -469,7 +470,15 @@ snippet logging
 	import logging
 	logger = logging.getLogger('${1:module}')
 snippet notify
-	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}') ${4}
+	logger.notifyChannel('${1:module}', netsvc.${2:LOG_DEBUG}, '${3:Message}')${4}
+snippet log Debug
+	logger.debug('${1}')
+snippet log Info
+	logger.info('${1}')
+snippet log Warning
+	logger.warning('${1}')
+snippet log Error
+	logger.error('${1}')
 #
 # Other python declaration
 #
