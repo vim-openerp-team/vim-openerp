@@ -103,7 +103,7 @@ snippet fields fields.char
 snippet fields fields.integer
 	'${1:fieldname}': fields.integer('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.float
-	'${1:fieldname}': fields.float('${2:Label}', ${4}help='${3:Help note}'),${5}
+	'${1:fieldname}': fields.float('${2:Label}', digits_compute=dp.get_precision('${3:PrecisionName}'), ${5}help='${4:Help note}'),${6}
 snippet fields fields.boolean
 	'${1:fieldname}': fields.boolean('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.date
