@@ -569,3 +569,5 @@ snippet trg trg_validate
 snippet trg trg_redirect
 	wf_service = netsvc.LocalService("workflow")
 	wf_service.trg_redirect(uid, '${1:model}', ${2:id}, ${3:new id}, cr)
+snippet context_get
+	context = self.pool.get('res.users').context_get(cr, uid)
