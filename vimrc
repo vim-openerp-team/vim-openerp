@@ -57,6 +57,8 @@ let g:DoxugenToolkit_briefTag_funcName="yes"
 
 "Value for snippet
 let g:snips_author="First Name, LAST NAME"
+" Shortcut to reload snippets
+noremap <silent><F6> :call ResetSnippets()<CR>:call GetSnippets(snippets_dir, &ft)<CR>
 
 au! BufRead,BufNewFile *.rml set ft=xml
 
