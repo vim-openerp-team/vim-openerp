@@ -74,7 +74,7 @@ snippet oo Open Object\Model
 	
 	$1()
 	
-snippet ooi Open Object\Model
+snippet ooi Open Object\Model Inherit
 	class ${1:ClassName}(osv.osv):
 		_inherit = '${2:ObjectName}'
 		
@@ -93,6 +93,16 @@ snippet oom Open Object\Wizard
 			${4}
 		}
 		
+	$1()
+	
+snippet oomi Open Object\Wizard Inherit
+	class ${1:ClassName}(osv.osv_memory):
+		_inherit = '${2:ObjectName}'
+		
+		_columns = {
+			${3}
+		}
+	
 	$1()
 	
 #
