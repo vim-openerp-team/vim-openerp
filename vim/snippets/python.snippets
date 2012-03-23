@@ -362,6 +362,8 @@ snippet write
 	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)${3}
 snippet unlink
 	self.unlink(cr, uid, ${1:ids}, context=context)${2}
+snippet copy
+	self.copy(cr, uid, ${1:ids}, ${2:default}, context=context)${3}
 snippet perm_read
 	self.perm_read(cr, uid, [${1:id}], context=context)${2}
 #
