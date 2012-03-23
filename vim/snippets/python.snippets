@@ -492,6 +492,8 @@ snippet log Error
 #
 snippet fm
 # New Function
+snippet super
+	super(${1:ClassName}, self).${2:methodName}(cr, uid, ${3:ids}, ${4}context=context)${5}
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 	    """${3:docstring for $1}"""
