@@ -140,6 +140,8 @@ noremap <A-S-Left> <C-w><
 noremap <A-S-Right> <C-w>>
 noremap <A-S-Up> <C-w>+
 noremap <A-S-Down> <C-w>-
+noremap <silent><C-S-Left> :execute 'tabmove ' . (tabpagenr()-2)<CR>
+noremap <silent><C-S-Right> :execute 'tabmove ' . tabpagenr()<CR>
 
 map <M-q> :bd<CR>
 
