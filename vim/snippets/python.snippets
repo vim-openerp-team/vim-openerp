@@ -323,6 +323,22 @@ snippet func on_change
 	            'field_2': res2
 	        }
 	    }
+snippet func fields.function
+	def _get_${1:field_name}(self, cr, uid, ids, field_name, args, context=None):
+	    result = {}
+	    for ${2:name} in self.browse(cr, uid, ids, context=context):
+	        result[$2.id] = ${3:value}
+	
+	    return result
+snippet func fields.function multi
+	def _get_${1:function_name}(self, cr, uid, ids, field_name, args, context=None):
+	    result = {}
+	    for ${2:name} in self.browse(cr, uid, ids, context=context):
+	        result[$2.id] = {
+	            ${4:field_name}: ${3:value},
+	        }
+	
+	    return result
 snippet func fields_view_get v 5.0
 	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
 	    """
