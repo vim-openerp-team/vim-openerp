@@ -148,6 +148,12 @@ snippet required
 	required=True, ${1}
 snippet translate
 	translate=True, ${1}
+snippet dp
+	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
+snippet digits digits
+	digits=(${1:16}, ${2:2}), ${3}
+snippet digits digits_compute
+	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
 snippet select
 	select=True, ${1}
 snippet ondel OnDelete Cascade
