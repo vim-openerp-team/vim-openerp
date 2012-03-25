@@ -74,7 +74,7 @@ snippet oo Open Object\Model
 	
 	$1()
 	
-snippet ooi Open Object\Model
+snippet ooi Open Object\Model Inherit
 	class ${1:ClassName}(osv.osv):
 		_inherit = '${2:ObjectName}'
 		
@@ -93,6 +93,16 @@ snippet oom Open Object\Wizard
 			${4}
 		}
 		
+	$1()
+	
+snippet oomi Open Object\Wizard Inherit
+	class ${1:ClassName}(osv.osv_memory):
+		_inherit = '${2:ObjectName}'
+		
+		_columns = {
+			${3}
+		}
+	
 	$1()
 	
 #
@@ -148,6 +158,12 @@ snippet required
 	required=True, ${1}
 snippet translate
 	translate=True, ${1}
+snippet dp
+	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
+snippet digits digits
+	digits=(${1:16}, ${2:2}), ${3}
+snippet digits digits_compute
+	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
 snippet select
 	select=True, ${1}
 snippet ondel OnDelete Cascade
@@ -317,6 +333,22 @@ snippet func on_change
 	            'field_2': res2
 	        }
 	    }
+snippet func fields.function
+	def _get_${1:field_name}(self, cr, uid, ids, field_name, args, context=None):
+	    result = {}
+	    for ${2:name} in self.browse(cr, uid, ids, context=context):
+	        result[$2.id] = ${3:value}
+	
+	    return result
+snippet func fields.function multi
+	def _get_${1:function_name}(self, cr, uid, ids, field_name, args, context=None):
+	    result = {}
+	    for ${2:name} in self.browse(cr, uid, ids, context=context):
+	        result[$2.id] = {
+	            ${4:field_name}: ${3:value},
+	        }
+	
+	    return result
 snippet func fields_view_get v 5.0
 	def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False):
 	    """
@@ -362,6 +394,8 @@ snippet write
 	self.write(cr, uid, ${1:ids}, ${2:vals}, context=context)${3}
 snippet unlink
 	self.unlink(cr, uid, ${1:ids}, context=context)${2}
+snippet copy
+	self.copy(cr, uid, ${1:ids}, ${2:default}, context=context)${3}
 snippet perm_read
 	self.perm_read(cr, uid, [${1:id}], context=context)${2}
 #
@@ -484,6 +518,8 @@ snippet log Error
 #
 snippet fm
 # New Function
+snippet super
+	super(${1:ClassName}, self).${2:methodName}(cr, uid, ${3:ids}, ${4}context=context)${5}
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 	    """${3:docstring for $1}"""
