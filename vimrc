@@ -57,6 +57,8 @@ let g:DoxugenToolkit_briefTag_funcName="yes"
 
 "Value for snippet
 let g:snips_author="First Name, LAST NAME"
+" Shortcut to reload snippets
+noremap <silent><F6> :call ResetSnippets()<CR>:call GetSnippets(snippets_dir, &ft)<CR>
 
 au! BufRead,BufNewFile *.rml set ft=xml
 
@@ -138,6 +140,8 @@ noremap <A-S-Left> <C-w><
 noremap <A-S-Right> <C-w>>
 noremap <A-S-Up> <C-w>+
 noremap <A-S-Down> <C-w>-
+noremap <silent><C-S-Left> :execute 'tabmove ' . (tabpagenr()-2)<CR>
+noremap <silent><C-S-Right> :execute 'tabmove ' . tabpagenr()<CR>
 
 map <M-q> :bd<CR>
 
