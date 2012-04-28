@@ -122,6 +122,19 @@ snippet menuitem Name
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    name="${4:Label}"/>
+snippet menuitem Server Action
+	<record id="action_${1:refid_server}" model="ir.actions.server">
+	    <field name="name">${2:Name of the action}</field>
+	    <field name="model_id" ref="model_${3:res_partner}"/>
+	    <field name="state">code</field>
+	    <field name="code">action = obj.${4:my_function}()</field>
+	</record>
+	
+	<menuitem name="$2"
+	    action="action_$1"
+	    id="menu_$1" 
+	    parent="base.menu_config"
+	    type="server" icon="STOCK_EXECUTE" sequence="100" />
 snippet wizard <wizard/>
 	<wizard id="wizard_${1:name}"
 	    string="${2:label}"
