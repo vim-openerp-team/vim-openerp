@@ -67,6 +67,7 @@ au! BufRead,BufNewFile *.rml set ft=xml
 map<F2> <ESC>:NERDTree<CR>
 noremap <F3> <ESC>:Dox<CR>
 inoremap <F3> <ESC>:Dox<CR>
+nnoremap <F4> :GundoToggle<CR>
 
 map<C-F12> <ESC>:set list!<CR>
 map<F12> <ESC>:set wrap!<CR>
