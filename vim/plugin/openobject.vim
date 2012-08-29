@@ -72,6 +72,16 @@ def oerpRead(model, model_id, fields=None, context=None):
 
     pprint(obj.read(model_id, fields, context))
 
+def oerpGetFields(model, fields=None, context=None):
+    """
+    Perform a fields_get and print the result
+    """
+    (connection, globalContext) = oerpConnect()
+    obj = Object(connection, model)
+    if context is None:
+        context = globalContext
+
+    pprint(obj.fields_get(fields, context))
 
 def oerpGetView(model, view_id=None, view_type=None, context=None):
     """
