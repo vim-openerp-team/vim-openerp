@@ -91,6 +91,9 @@ let g:load_doxygen_syntax=1
 
 vnoremap < <gv
 vnoremap > >gv
+vnoremap <silent>* yq/i\M<ESC>p<CR>
+vnoremap <silent># yq?i\M<ESC>p<CR>
+
 
 " Syntastic
 let g:syntastic_python_checker = 'pyflakes-2.6'
