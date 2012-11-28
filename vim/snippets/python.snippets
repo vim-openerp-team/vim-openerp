@@ -468,6 +468,8 @@ snippet except raise wizard.except_wizard(title, message)
 ## Cursor
 snippet cr cr.execute()
 	cr.execute("""${1:Query}""")
+snippet cr cr.mogrify()
+	cr.mogrify("""${1:Query}""")
 snippet cr cr.commit()
 	cr.commit()
 snippet cr cr.rollback()
