@@ -6,9 +6,13 @@ snippet imp
 	import ${1:module}
 snippet from
 	from ${1:module} import ${2:class}
-snippet osv
+snippet osv <= 6.0
 	from osv import osv
 	from osv import fields
+	${1}
+snippet osv >= 6.1
+	from openerp.osv import osv
+	from openerp.osv import fields
 	${1}
 # Module Docstring
 snippet docs
