@@ -160,8 +160,12 @@ snippet readonly
 	readonly=True, ${1}
 snippet required
 	required=True, ${1}
-snippet translate
+snippet translate argument
 	translate=True, ${1}
+snippet translate import OpenERP <= 6.0
+	from tools.translate import _
+snippet translate import OpenERP >= 6.1
+	from openerp.tools.translate import _
 snippet dp
 	digits_compute=dp.get_precision('${1:PrecisionName}'), ${2}
 snippet digits digits
