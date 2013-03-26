@@ -67,7 +67,7 @@ snippet rule
 #
 # Define class for OpenObject
 #
-snippet oo Open Object\Model
+snippet oo OpenObject Class < 7.0
 	class ${1:ClassName}(osv.osv):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
@@ -78,7 +78,16 @@ snippet oo Open Object\Model
 	
 	$1()
 	
-snippet ooi Open Object\Model Inherit
+snippet oo OpenObject Class >= 7.0
+	class ${1:ClassName}(osv.Model):
+		_name = '${2:ObjectName}'
+		_description = '${3}'
+		
+		_columns = {
+			${4}
+		}
+	
+snippet ooi OpenObject Class Inherit < 7.0
 	class ${1:ClassName}(osv.osv):
 		_inherit = '${2:ObjectName}'
 		
@@ -87,6 +96,14 @@ snippet ooi Open Object\Model Inherit
 		}
 	
 	$1()
+	
+snippet ooi OpenObject Class Inherit >= 7.0
+	class ${1:ClassName}(osv.Model):
+		_inherit = '${2:ObjectName}'
+		
+		_columns = {
+			${3}
+		}
 	
 snippet oom Open Object\Wizard
 	class ${1:ClassName}(osv.osv_memory):
