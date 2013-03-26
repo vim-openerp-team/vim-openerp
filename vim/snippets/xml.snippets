@@ -122,14 +122,24 @@ snippet form
 	<form string="${1:Label}">
 	    $0
 	</form>
-snippet menuitem Action
+snippet menuitem Action < 7.0
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
 	    sequence="${3:20}"
 	    action="action_${4:Action}"/>
-snippet menuitem Name
+snippet menuitem Action >= 7.0
+	<menuitem id="${1:ir_model_data}_menu" 
+	    parent="${2:menu_parent}_menu"
+	    sequence="${3:20}"
+	    name="${5:Label}"
+	    action="${4:Action}_action"/>
+snippet menuitem Name < 7.0
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
+	    sequence="${3:20}"
+	    name="${4:Label}"/>
+	<menuitem id="${1:ir_model_data}_menu" 
+	    parent="${2:menu_parent}_menu"
 	    sequence="${3:20}"
 	    name="${4:Label}"/>
 snippet menuitem Server Action
