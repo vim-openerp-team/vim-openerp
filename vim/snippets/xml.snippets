@@ -25,7 +25,7 @@ snippet field <field ref="xxx"... />
 snippet field <field eval="xxx"... />
 	<field name="${1:Field}" eval="${2:Value}"/>
 snippet field <field name="arch" type="xml"></field>
-	<field name"arch" type="xml">
+	<field name="arch" type="xml">
 	    $1
 	</field>
 snippet button
@@ -120,12 +120,27 @@ snippet confirm
 	confirm="Are you sure ?"
 snippet tree
 	<tree string="${1:Label}">
-	    $0
+	    $1
 	</tree>
 snippet form
 	<form string="${1:Label}">
-	    $0
+	    $1
 	</form>
+snippet calendar
+	<calendar string="${1:Label}" date_start="${2:Begin date field}"
+	          date_stop="${3:End date field}" color="${4:Field group for color}">
+	    $5
+	</calendar>
+snippet gantt Start Date + Delay
+	<gantt string="${1:Gantt}" color="${2:Field}"
+	       date_start="${3:Start Date Field}" date_delay="${4:Delay Field}" default_group_by="${5:Group By Field}">
+		<field name="name"/>
+	</gantt>
+snippet gantt Start Date + End Date
+	<gantt string="${1:Gantt}" color="${2:Field}"
+	       date_start="${3:Start Date Field}" date_stop="${4:End Date Field}" default_group_by="${5:Group By Field}">
+		<field name="name"/>
+	</gantt>
 snippet menuitem Action < 7.0
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
