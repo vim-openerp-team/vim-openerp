@@ -141,6 +141,11 @@ snippet gantt Start Date + End Date
 	       date_start="${3:Start Date Field}" date_stop="${4:End Date Field}" default_group_by="${5:Group By Field}">
 		<field name="name"/>
 	</gantt>
+snippet graph
+	<graph string="${1:Graph}" type="${2:bar}">
+	    <field name="${3:name}"/>
+	    <field name="${4:supercount}" operator="+"/>
+	</graph>
 snippet menuitem Action < 7.0
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
