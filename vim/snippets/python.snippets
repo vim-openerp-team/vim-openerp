@@ -436,7 +436,7 @@ snippet _ _columns
 snippet _ _constraints
 	def ${1:_check_method}(self, cr, uid, ids, context=None):
 	    #TODO : check condition and return boolean accordingly
-	    if not context is None:
+	    if context is None:
 	        context = {}
 	    return True
 	
