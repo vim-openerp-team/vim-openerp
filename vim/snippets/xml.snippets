@@ -24,6 +24,10 @@ snippet field <field ref="xxx"... />
 	<field name="${1:Field}" ref="${2:ir_model_data}"/>
 snippet field <field eval="xxx"... />
 	<field name="${1:Field}" eval="${2:Value}"/>
+snippet field <field name="arch" type="xml"></field>
+	<field name"arch" type="xml">
+	    $1
+	</field>
 snippet button
 	<button string="${1:Validate}" icon="${2:gtk-ok}" states="${3:draft}" type="${4:object}" name="${5:to_validate}"/>
 snippet domain
