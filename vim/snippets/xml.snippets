@@ -122,8 +122,12 @@ snippet tree
 	<tree string="${1:Label}">
 	    $1
 	</tree>
-snippet form
+snippet form < 7.0
 	<form string="${1:Label}">
+	    $1
+	</form>
+snippet form >= 7.0
+	<form string="${1:Label}" version="7.0">
 	    $1
 	</form>
 snippet calendar
@@ -172,6 +176,14 @@ snippet kanban
 	        </t>
 	    </templates>
 	</kanban>
+snippet header
+	<header>
+	    $1
+	</header>
+snippet sheet
+	<sheet>
+	    $1
+	</sheet>
 snippet menuitem Action < 7.0
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
@@ -532,6 +544,8 @@ snippet widget one2many_list
 	widget="one2many_list"
 snippet widget password
 	password="1"
+snippet operator
+	operator="+"
 snippet test <test expr=""/>
 	<test expr="len(${1:one2many}) == ${2:1}"/>
 snippet test <test expr=""></test>
