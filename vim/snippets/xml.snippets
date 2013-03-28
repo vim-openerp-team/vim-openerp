@@ -78,8 +78,10 @@ snippet page
 	<page string="${1:Label}">
 	    $0
 	</page>
-snippet label
+snippet label < 7.0
 	<label string="${1:Label}"/>
+snippet label >= 7.0
+	<label for="${2:Field}" string="${1:Label}"/>
 snippet attribute
 	<attribute name="${1:name}">${2:value}</attribute>
 snippet attr
@@ -548,6 +550,8 @@ snippet widget progressbar
 	widget="progressbar"
 snippet widget many2many
 	widget="many2many"
+snippet widget many2many_tags
+	widget="many2many_tags"
 snippet widget one2many_list
 	widget="one2many_list"
 snippet widget password
