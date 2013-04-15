@@ -66,17 +66,17 @@ snippet separator
 	<separator string="${1:Label}" colspan="${2:4}"/>
 snippet group
 	<group colspan="${1:4}">
-	    $0
+	    $2
 	</group>
 snippet notebook
 	<notebook colspan="4">
 	    <page string="${1:Label}">
-		$0
+		$2
 	    </page>
 	</notebook>
 snippet page
 	<page string="${1:Label}">
-	    $0
+	    $2
 	</page>
 snippet label < 7.0
 	<label string="${1:Label}"/>
@@ -90,7 +90,7 @@ snippet newline
 	<newline/>
 snippet record
 	<record id="${1:ir_model_data}" model="${2:Model}">
-	    $0
+	    $3
 	</record>
 snippet ref
 	ref="${1:ir_model_data}"
@@ -132,15 +132,15 @@ snippet version
 	version="7.0"
 snippet tree
 	<tree string="${1:Label}">
-	    $1
+	    $2
 	</tree>
 snippet form < 7.0
 	<form string="${1:Label}">
-	    $1
+	    $2
 	</form>
 snippet form >= 7.0
 	<form string="${1:Label}" version="7.0">
-	    $1
+	    $2
 	</form>
 snippet calendar
 	<calendar string="${1:Label}" date_start="${2:Begin date field}"
@@ -210,10 +210,6 @@ snippet menuitem Action >= 7.0
 snippet menuitem Name < 7.0
 	<menuitem id="menu_${1:ir_model_data}" 
 	    parent="menu_${2:menu_parent}"
-	    sequence="${3:20}"
-	    name="${4:Label}"/>
-	<menuitem id="${1:ir_model_data}_menu" 
-	    parent="${2:menu_parent}_menu"
 	    sequence="${3:20}"
 	    name="${4:Label}"/>
 snippet menuitem Server Action
