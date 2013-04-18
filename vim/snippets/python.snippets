@@ -530,6 +530,10 @@ snippet sequence
 	'sequence': fields.integer('${1:Sequence}'),${2}
 snippet color
 	'color': fields.integer('${1:Colour}'),
+	# PLEASE ADD A DEFAULT VALUE 0 FOR THE color FIELD!
+snippet state
+	'state': fields.selection(${1:[('', '')]}, '${2:Label}', help='${3:Help note}'),${4}
+	# PLEASE ADD A DEFAULT VALUE (e.g. draft) FOR THE state FIELD!
 snippet logger
 	import netsvc
 	logger = netsvc.Logger()
