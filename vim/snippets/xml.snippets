@@ -277,8 +277,8 @@ snippet wizard osv_memory menu >= 7.0
 			<field name="${4:name}"/>
 		    </group>
 		    <footer>
-		        <button icon="gtk-cancel" type="special" special="cancel" string="Cancel"/>
-		        <button icon="terp-gtk-go-back-rtl" string="Continue" name="action_${5:continue}" type="object"
+		        <button type="special" special="cancel" string="Cancel" icon="gtk-cancel"/>
+		        <button type="object" string="Next" name="action_${5:continue}" icon="gtk-ok"
 			        confirm="Are you sure you want to continue?"/>
 		    </footer>
 		</form>
