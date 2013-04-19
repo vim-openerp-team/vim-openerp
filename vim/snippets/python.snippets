@@ -105,7 +105,7 @@ snippet ooi OpenObject Class Inherit >= 7.0
 			${3}
 		}
 	
-snippet oom Open Object\Wizard
+snippet oom Wizard osv_memory
 	class ${1:ClassName}(osv.osv_memory):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
@@ -116,6 +116,15 @@ snippet oom Open Object\Wizard
 		
 	$1()
 	
+snippet oom Wizard TransientModel
+	class ${1:ClassName}(osv.TransientModel):
+		_name = '${2:ObjectName}'
+		_description = '${3:Description}'
+		
+		_columns = {
+			${4}
+		}
+		
 snippet oomi Open Object\Wizard Inherit
 	class ${1:ClassName}(osv.osv_memory):
 		_inherit = '${2:ObjectName}'
