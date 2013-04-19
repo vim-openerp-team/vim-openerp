@@ -232,7 +232,7 @@ snippet wizard <wizard/>
 	    string="${2:label}"
 	    model="${3:ir.model}"
 	    name="${4:wizard_name}"/>
-snippet wizard osv_memory menu
+snippet wizard osv_memory menu < 7.0
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
 	    <field name="model">${2:Model}</field>
@@ -266,6 +266,38 @@ snippet wizard osv_memory menu
 	    parent="menu_${6:menu_parent}"
 	    sequence="${7:20}"
 	    action="action_$1_view"/>
+snippet wizard osv_memory menu >= 7.0
+	<record id="view_${1:model}_form" model="ir.ui.view">
+	    <field name="name">$2.form</field>
+	    <field name="model">${2:Model}</field>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<form string="${3:Label}" col="4" version="7.0">
+		    <group colspan="2">
+			<field name="${4:name}"/>
+		    </group>
+		    <footer>
+		        <button icon="gtk-cancel" type="special" special="cancel" string="Cancel"/>
+		        <button icon="terp-gtk-go-back-rtl" string="Continue" name="action_${5:continue}" type="object"
+			        confirm="Are you sure you want to continue?"/>
+		    </footer>
+		</form>
+	    </field>
+	</record>
+	
+	<record model="ir.actions.act_window" id="$1_wizard_action">
+	    <field name="name">$3</field>
+	    <field name="res_model">$2</field>
+	    <field name="view_type">form</field>
+	    <field name="view_mode">form</field>
+	    <field name="context">{}</field>
+	    <field name="target">new</field>
+	</record>
+	
+	<menuitem id="$1_wizard_menu"
+	    parent="${6:menu_parent}_menu"
+	    sequence="${7:20}"
+	    action="$1_wizard_action"/>
 snippet wizard osv_memory toolbar
 	<record id="view_${1:model}_form" model="ir.ui.view">
 	    <field name="name">$2.form</field>
