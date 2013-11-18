@@ -11,8 +11,12 @@ let g:OObj_PORT=8069
 
 python << EOL
 from pprint import pprint
-from oobjlib.connection import Connection
-from oobjlib.component import Object
+try:
+    from oobjlib.connection import Connection
+    from oobjlib.component import Object
+except Exception:
+    Connection = None
+    Object = None
 
 def oerpConnect(server=None, dbname=None, login=None, password=None, port=None):
     """
