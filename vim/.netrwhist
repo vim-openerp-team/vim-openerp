@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/alncchau/instances/paln120104/syleam/addons/base_people'
-let g:netrw_dirhist_2='/home/alncchau/syleam/web/syleam/videos_youtube_dailymotion'
-let g:netrw_dirhist_3='/home/alncchau/syleam/openerp/modules/openerp-jasperserver/jasper_server/migrations/6.5.7'
