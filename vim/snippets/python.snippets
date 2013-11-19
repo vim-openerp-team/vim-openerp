@@ -12,6 +12,7 @@ snippet osv <= 6.0
 	${1}
 snippet osv >= 6.1
 	from openerp.osv import osv
+	from openerp.osv import orm
 	from openerp.osv import fields
 	${1}
 # Module Docstring
@@ -79,7 +80,7 @@ snippet oo OpenObject Class < 7.0
 	$1()
 	
 snippet oo OpenObject Class >= 7.0
-	class ${1:ClassName}(osv.Model):
+	class ${1:ClassName}(orm.Model):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
 		
@@ -98,7 +99,7 @@ snippet ooi OpenObject Class Inherit < 7.0
 	$1()
 	
 snippet ooi OpenObject Class Inherit >= 7.0
-	class ${1:ClassName}(osv.Model):
+	class ${1:ClassName}(orm.Model):
 		_inherit = '${2:ObjectName}'
 		
 		_columns = {
@@ -117,7 +118,7 @@ snippet oom Wizard osv_memory
 	$1()
 	
 snippet oom Wizard TransientModel
-	class ${1:ClassName}(osv.TransientModel):
+	class ${1:ClassName}(orm.TransientModel):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
 		
