@@ -240,7 +240,7 @@ snippet wizard osv_memory menu < 7.0
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="${3:Label}">
-		    <field name="${4:name}" select="1"/>
+		    <field name="${4:name}"/>
 		    <separator string="" colspan="4" />
 		    <group colspan="4" col="6">
 		        <label string ="" colspan="2"/>
@@ -306,7 +306,7 @@ snippet wizard osv_memory toolbar
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="${3:Label}">
-		    <field name="${4:name}" select="1"/>
+		    <field name="${4:name}"/>
 		</form>
 	    </field>
 	</record>
@@ -338,7 +338,7 @@ snippet view form
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="${3:Label}">
-		    <field name="${4:name}" select="1"/>
+		    <field name="${4:name}"/>
 		</form>
 	    </field>
 	</record>
@@ -386,7 +386,7 @@ snippet view both (tree, form)
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="$3">
-		    <field name="$4" select="1"/>
+		    <field name="$4"/>
 		</form>
 	    </field>
 	</record>
@@ -410,7 +410,7 @@ snippet view both (tree, form, search)
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="$3">
-		    <field name="$4" select="1"/>
+		    <field name="$4"/>
 		</form>
 	    </field>
 	</record>
@@ -445,7 +445,7 @@ snippet view both (tree, form) + Action + Menu
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="$3">
-		    <field name="$4" select="1"/>
+		    <field name="$4"/>
 		</form>
 	    </field>
 	</record>
@@ -498,7 +498,7 @@ snippet view both (tree, form, search) + Action + Menu
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<form string="$3">
-		    <field name="$4" select="1"/>
+		    <field name="$4"/>
 		</form>
 	    </field>
 	</record>
@@ -544,6 +544,20 @@ snippet view both (tree, form, search) + Action + Menu
 	    parent="${5:module.xmlid}"
 	    sequence="20"
 	    action="act_open_$1_view"/>
+snippet view form (inherit)
+	<record id="view_${1:model}_form" model="ir.ui.view">
+	    <field name="name">$2.form</field>
+	    <field name="model">${2:Model}</field>
+	    <field name="inherit_id" ref="${3:xmlid}"/>
+	    <field name="priority" eval="8"/>
+	    <field name="arch" type="xml">
+		<xpath expr="//notebook" position="inside">
+		    <page string="${4:text}">
+		        <field name="${5:name}"/>
+		    </page>
+		</xpath>
+	    </field>
+	</record>
 snippet act_window
 	<act_window id="act_${1:ir_model_data}"
 	    name="${2:Name}"
