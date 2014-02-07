@@ -362,7 +362,7 @@ snippet view search
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<search string="${3:Label}">
-		    <field name="${4:name}" select="True"/>
+		    <field name="${4:name}"/>
 		</search>
 	    </field>
 	</record>
@@ -421,7 +421,7 @@ snippet view both (tree, form, search)
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<search string="$3">
-		    <field name="$4" select="True"/>
+		    <field name="$4"/>
 		</search>
 	    </field>
 	</record>
@@ -510,7 +510,7 @@ snippet view both (tree, form, search) + Action + Menu
 	    <field name="priority" eval="8"/>
 	    <field name="arch" type="xml">
 		<search string="$3">
-		    <field name="$4" select="True"/>
+		    <field name="$4"/>
 		</search>
 	    </field>
 	</record>
