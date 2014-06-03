@@ -15,6 +15,9 @@ snippet osv >= 6.1
 	from openerp.osv import orm
 	from openerp.osv import fields
 	${1}
+snippet osv >= 8.0
+	from openerp import Model, api, fields
+	${1}
 # Module Docstring
 snippet docs
 	'''
@@ -72,69 +75,102 @@ snippet oo OpenObject Class < 7.0
 	class ${1:ClassName}(osv.osv):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
-		
+	
 		_columns = {
 			${4}
 		}
 	
 	$1()
 	
-snippet oo OpenObject Class >= 7.0
+snippet oo OpenObject Class == 7.0
 	class ${1:ClassName}(orm.Model):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
-		
+	
 		_columns = {
 			${4}
 		}
+	
+snippet oo OpenObject Class >= 8.0
+	class ${1:ClassName}(Model):
+		_name = '${2:ObjectName}'
+		_description = '${3}'
+	
+		${4}
 	
 snippet ooi OpenObject Class Inherit < 7.0
 	class ${1:ClassName}(osv.osv):
 		_inherit = '${2:ObjectName}'
-		
+	
 		_columns = {
 			${3}
 		}
 	
 	$1()
 	
-snippet ooi OpenObject Class Inherit >= 7.0
+snippet ooi OpenObject Class Inherit == 7.0
 	class ${1:ClassName}(orm.Model):
 		_inherit = '${2:ObjectName}'
-		
+	
 		_columns = {
 			${3}
 		}
+	
+snippet ooi OpenObject Class Inherit >= 8.0
+	class ${1:ClassName}(Model):
+		_inherit = '${2:ObjectName}'
+	
+		${3}
 	
 snippet oom Wizard osv_memory
 	class ${1:ClassName}(osv.osv_memory):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
-		
+	
 		_columns = {
 			${4}
 		}
-		
+	
 	$1()
 	
-snippet oom Wizard TransientModel
+snippet oom Wizard TransientModel == 7.0
 	class ${1:ClassName}(orm.TransientModel):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
-		
+	
 		_columns = {
 			${4}
 		}
-		
+	
+snippet oom Wizard TransientModel >= 8.0
+	class ${1:ClassName}(TransientModel):
+		_name = '${2:ObjectName}'
+		_description = '${3:Description}'
+	
+		${4}
+	
 snippet oomi Open Object\Wizard Inherit
 	class ${1:ClassName}(osv.osv_memory):
 		_inherit = '${2:ObjectName}'
-		
+	
 		_columns = {
 			${3}
 		}
 	
 	$1()
+	
+snippet oomi Wizard TransientModel Inherit == 7.0
+	class ${1:ClassName}(orm.TransientModel):
+		_name = '${2:ObjectName}'
+		_description = '${3:Description}'
+	
+		${4}
+	
+snippet oomi Wizard TransientModel Inherit >= 8.0
+	class ${1:ClassName}(TransientModel):
+		_inherit = '${2:ObjectName}'
+	
+		${3}
 	
 snippet this (use in wizard)
 	this = self.browse(cr, uid, ids[0], context=context)
@@ -180,6 +216,38 @@ snippet fields fields.binary
 	'${1:fieldname}': fields.binary('${2:Label}', ${4}help='${3:Help note}'),${5}
 snippet fields fields.reference
 	'${1:fieldname}': fields.reference('${2:Label}', selection=${3:[('', '')]}, size=128, ${5}help='${4:Help note}'),${6}
+#
+# Define type of fields (New API)
+#
+snippet field fields.Char
+	${1:fieldname} = fields.Char(string='${2:Label}', size=${3:64}, ${5}help='${4:Help note}')${6}
+snippet field fields.Integer
+	${1:fieldname} = fields.Integer(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.Float
+	${1:fieldname} = fields.Float(string='${2:Label}', digits_compute=dp.get_precision('${3:PrecisionName}'), ${5}help='${4:Help note}')${6}
+snippet field fields.Boolean
+	${1:fieldname} = fields.Boolean(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.Date
+	${1:fieldname} = fields.Date(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.Datetime
+	${1:fieldname} = fields.Datetime(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.Selection
+	${1:fieldname} = fields.Selection(${2:[('', '')]}, string='${3:Label}', ${5}help='${4:Help note}')${6}
+snippet field fields.Many2one
+	${1:fieldname}_id = fields.Many2one('${2:ObjectName}', string='${3:Label}', ${5}help='${4:Help note}')${6}
+snippet field fields.Many2many
+	${1:fieldname}_ids = fields.Many2many(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.One2many
+	${1:fieldname}_ids = fields.One2many('${2:ObjectName}', '${3:fieldname}_id', string='${4:Label}', ${6}help='${5:Help note}')${7}
+snippet field fields.Property
+	${1:fieldname} = fields.Property('${2:object}', method=${3:True},
+			    string='${4:label}', type='${5:many2one}', ${7}help='${6:Help note}')${8}
+snippet field fields.Text
+	${1:fieldname} = fields.Text(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.Binary
+	${1:fieldname} = fields.Binary(string='${2:Label}', ${4}help='${3:Help note}')${5}
+snippet field fields.Reference
+	${1:fieldname} = fields.Reference(string='${2:Label}', selection=${3:[('', '')]}, size=128, ${5}help='${4:Help note}')${6}
 # Attribute for fields
 snippet domain
 	domain=[('${1:state}', '${2:=}', '${3:done}')]
@@ -213,6 +281,16 @@ snippet ondelete OnDelete Set Null
 	ondelete='set null', ${1}
 snippet store
 	store=True, ${1}
+snippet compute compute
+	compute='${1:_methodName}', ${2}
+snippet compute inverse
+	inverse='${1:_methodName}', ${2}
+snippet compute search
+	search='${1:_methodName}', ${2}
+snippet relate
+	relate='${1:field.chain}', ${2}
+snippet default
+	default='${1:value}', ${2}
 #
 # Define function in osv.osv
 #
@@ -435,6 +513,31 @@ snippet copy
 	self.copy(cr, uid, ${1:ids}, ${2:default}, context=context)${3}
 snippet perm_read
 	self.perm_read(cr, uid, [${1:id}], context=context)${2}
+###
+## Common methods defined in Model (New API)
+##
+snippet Func search (other model)
+	self.env['${1:model}'].search([${2:('name', '=', name)}])
+snippet Func browse (other model)
+	self.env['${1:model}'].browse(${2:ids})
+snippet Func create (other model)
+	self.env['${1:model}'].create(${2:values})
+snippet Func write (other model)
+	self.env['${1:model}'].write(${2:values})
+snippet Func copy (other model)
+	self.env['${1:model}'].copy(${2:values})
+snippet Func unlink (other model)
+	self.env['${1:model}'].unlink(${2:values})
+snippet Func search (same model)
+	self.search([${2:('name', '=', name)}])
+snippet Func browse (same model)
+	self.browse(${2:ids})
+snippet Func create (same model)
+	self.create(${2:values})
+snippet Func write (same model)
+	self.write(${2:values})
+snippet Func copy (same model)
+	self.copy(${2:values})
 #
 # Define all variables in osv.osv begin by _
 #
@@ -485,20 +588,32 @@ snippet _ _sql
 	_sql = """${1:CREATE TABLE .....}"""
 snippet _ _log_access
 	_log_access = False
-snippet . search
+snippet . search (Old API)
 	.search(cr, uid, ${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None}, context=${5:context})${6}
-snippet . browse
+snippet . browse (Old API)
 	.browse(cr, uid, ${1:ids}, context=${2:context})${3}
-snippet . read
+snippet . read (Old API)
 	.read(cr, uid, ${1:ids}, ['${2:name}'], context=${3:context})${4}
-snippet . create
+snippet . create (Old API)
 	.create(cr, uid, ${1:vals}, context=${2:context})${3}
-snippet . write
+snippet . write (Old API)
 	.write(cr, uid, ${1:ids}, ${2:vals}, context=${3:context})${4}
-snippet . unlink
+snippet . unlink (Old API)
 	.unlink(cr, uid, ${1:ids}, context=${2:context})${3}
-snippet . copy
+snippet . copy (Old API)
 	.copy(cr, uid, ${1:id}, ${2:default}, context=${3:context})${4}
+snippet . search (New API)
+	.search(${1:domain}, offset=${2:0}, limit=${3:None}, order=${4:None})${5}
+snippet . browse (New API)
+	.browse(${1:ids})${2}
+snippet . create (New API)
+	.create(${1:vals})${2}
+snippet . write (New API)
+	.write(${1:vals})${2}
+snippet . unlink (New API)
+	.unlink()${1}
+snippet . copy (New API)
+	.copy(${1:default})${2}
 ###
 ## define exception
 snippet except raise osv.except_osv(title, message)
@@ -637,6 +752,10 @@ snippet ifcontext
 snippet pdb
 	import pdb
 	pdb.set_trace()
+snippet date to_string
+	fields.Datetime.to_string(${1:datetime instance})${2}
+snippet date from_string
+	fields.Datetime.from_string(${1:datetime string})${2}
 # workflow
 snippet trg trg_write
 	wf_service = netsvc.LocalService("workflow")
@@ -658,3 +777,39 @@ snippet trg trg_redirect
 	wf_service.trg_redirect(uid, '${1:model}', ${2:id}, ${3:new id}, cr)
 snippet context_get
 	context = self.pool.get('res.users').context_get(cr, uid)
+# Decorators
+snippet @ model
+	@api.model
+snippet @ multi
+	@api.multi
+snippet @ one
+	@api.one
+snippet @ returns
+	@api.returns('${1:model}')${2}
+snippet @ constrains
+	@api.constrains('${1:field}')${2}
+snippet @ onchange
+	@api.onchange('${1:field}')${2}
+snippet @ depends
+	@api.depends('${1:field.chain}')${2}
+# Environment access
+snippet env cr
+	self.env.cr
+snippet env uid
+	self.env.uid
+snippet env user
+	self.env.user
+snippet env context
+	self.env.context
+snippet env ref
+	self.env.ref('${1:xml id}')${2}
+snippet env model
+	self.env['${1:model}']${2}
+snippet env new env
+	self.env(${1:cr}, ${2:uid}, ${3:context})${4}
+snippet env with_env
+	self.env.with_env(${1:env})${2}
+snippet env with_context
+	self.env.with_context(${1:context})${2}
+snippet env sudo
+	self.env.sudo(${1:uid})${2}
