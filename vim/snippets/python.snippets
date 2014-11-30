@@ -16,7 +16,7 @@ snippet osv >= 6.1
 	from openerp.osv import fields
 	${1}
 snippet osv >= 8.0
-	from openerp import Model, api, fields
+	from openerp import models, api, fields, exceptions
 	${1}
 # Module Docstring
 snippet docs
@@ -92,7 +92,7 @@ snippet oo OpenObject Class == 7.0
 		}
 	
 snippet oo OpenObject Class >= 8.0
-	class ${1:ClassName}(Model):
+	class ${1:ClassName}(models.Model):
 		_name = '${2:ObjectName}'
 		_description = '${3}'
 	
@@ -117,7 +117,7 @@ snippet ooi OpenObject Class Inherit == 7.0
 		}
 	
 snippet ooi OpenObject Class Inherit >= 8.0
-	class ${1:ClassName}(Model):
+	class ${1:ClassName}(models.Model):
 		_inherit = '${2:ObjectName}'
 	
 		${3}
@@ -143,7 +143,7 @@ snippet oom Wizard TransientModel == 7.0
 		}
 	
 snippet oom Wizard TransientModel >= 8.0
-	class ${1:ClassName}(TransientModel):
+	class ${1:ClassName}(models.TransientModel):
 		_name = '${2:ObjectName}'
 		_description = '${3:Description}'
 	
@@ -167,7 +167,7 @@ snippet oomi Wizard TransientModel Inherit == 7.0
 		${4}
 	
 snippet oomi Wizard TransientModel Inherit >= 8.0
-	class ${1:ClassName}(TransientModel):
+	class ${1:ClassName}(models.TransientModel):
 		_inherit = '${2:ObjectName}'
 	
 		${3}
@@ -616,10 +616,14 @@ snippet . copy (New API)
 	.copy(${1:default})${2}
 ###
 ## define exception
-snippet except raise osv.except_osv(title, message)
+snippet except raise osv.except_osv(title, message) (Old API)
 	raise osv.except_osv(_('${1:Error}'), _('${2:Message}'))
-snippet except raise wizard.except_wizard(title, message)
+snippet except raise wizard.except_wizard(title, message) (Very old API)
 	raise wizard.except_wizard(_('${1:Error}'), _('${2:Message}'))
+snippet except raise exceptions.Warning(title, message) (New API)
+	raise exceptions.Warning(_('${1:Error}'), _('${2:Message}'))
+snippet except raise exceptions.RedirectWarning(title, message) (New API)
+	raise exceptions.RedirectWarning(_('${1:Message}'), ${2:action_id}, _('${3:Button Text}'))
 ###
 ## Cursor
 snippet cr cr.execute()
