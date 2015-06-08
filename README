@@ -8,6 +8,7 @@ Installation
 Add packages:
 - vim-python
 - exuberant-ctags
+- python-flake8
 
  $ sudo aptitude install exuberant-ctags
 
