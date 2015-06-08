@@ -236,7 +236,7 @@ snippet field fields.Selection
 snippet field fields.Many2one
 	${1:fieldname}_id = fields.Many2one('${2:ObjectName}', string='${3:Label}', ${5}help='${4:Help note}')${6}
 snippet field fields.Many2many
-	${1:fieldname}_ids = fields.Many2many(string='${2:Label}', ${4}help='${3:Help note}')${5}
+	${1:fieldname}_ids = fields.Many2many('${2:ObjectName}', string='${3:Label}', ${5}help='${4:Help note}')${6}
 snippet field fields.One2many
 	${1:fieldname}_ids = fields.One2many('${2:ObjectName}', '${3:fieldname}_id', string='${4:Label}', ${6}help='${5:Help note}')${7}
 snippet field fields.Property
