@@ -19,6 +19,14 @@
 "    along with this program.  If not, see http://www.gnu.org/licenses.
 "
 "#############################################################################
+" Enable Pathogen
+execute pathogen#infect()
+
+" Vim Flake8 shortcut change to F5 to reflect old pep8 plugin
+autocmd FileType python map <buffer> <F5> :call Flake8()<CR>
+" Automatically execute flake8 validation on python file write
+autocmd BufWritePost *.py call Flake8()
+
 syntax enable
 syn sync minlines=300
 set number
