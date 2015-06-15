@@ -51,7 +51,7 @@ set nocompatible
 filetype plugin indent on 
 
 set laststatus=2
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [BUF=%n]\ %#warningmsg#%{SyntasticStatuslineFlag()}%*\ %{strftime(\"%d-%m-%Y\ %H:%M:%S\",getftime(expand(\"%:p\")))}
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [BUF=%n]\ %{strftime(\"%d-%m-%Y\ %H:%M:%S\",getftime(expand(\"%:p\")))}
 
 set mouse=a
 
@@ -102,13 +102,6 @@ vnoremap > >gv
 vnoremap <silent>* yq/i\M<ESC>p<CR>
 vnoremap <silent># yq?i\M<ESC>p<CR>
 
-
-" Syntastic
-let g:syntastic_python_checker = 'pyflakes-2.6'
-let g:syntastic_check_on_open=1
-"let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_stl_format = '[SYNTAX=%E{E:%e}%B{/}%W{W:%w}]'
 
 au FileType c,cpp,java set mps+==:;
 
