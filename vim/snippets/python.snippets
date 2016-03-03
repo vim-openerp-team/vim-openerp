@@ -620,9 +620,9 @@ snippet except raise osv.except_osv(title, message) (Old API)
 	raise osv.except_osv(_('${1:Error}'), _('${2:Message}'))
 snippet except raise wizard.except_wizard(title, message) (Very old API)
 	raise wizard.except_wizard(_('${1:Error}'), _('${2:Message}'))
-snippet except raise exceptions.Warning(title, message) (New API)
-	raise exceptions.Warning(_('${1:Error}'), _('${2:Message}'))
-snippet except raise exceptions.RedirectWarning(title, message) (New API)
+snippet except raise exceptions.Warning(message) (New API)
+	raise exceptions.Warning(_('${1:Message}'))
+snippet except raise exceptions.RedirectWarning(message, action, button_text) (New API)
 	raise exceptions.RedirectWarning(_('${1:Message}'), ${2:action_id}, _('${3:Button Text}'))
 ###
 ## Cursor
