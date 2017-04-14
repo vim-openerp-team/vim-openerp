@@ -16,7 +16,7 @@ snippet osv >= 6.1
 	from openerp.osv import fields
 	${1}
 snippet osv >= 8.0
-	from openerp import models, api, fields, exceptions
+	from openerp import api, exceptions, fields, models, _
 	${1}
 # Module Docstring
 snippet docs
@@ -40,30 +40,9 @@ snippet cl
 			self.$4 = $4
 			${6}
 snippet copyright
-	##############################################################################
-	#
-	#    ${1:ModuleName} module for OpenERP, ${2:Description}
-	#    Copyright (C) ${3:200X} ${4:Company} (<http://${5:website}>) ${6:author}
-	#
-	#    This file is a part of $1
-	#
-	#    $1 is free software: you can redistribute it and/or modify
-	#    it under the terms of the GNU General Public License as published by
-	#    the Free Software Foundation, either version 3 of the License, or
-	#    (at your option) any later version.
-	#
-	#    $1 is distributed in the hope that it will be useful,
-	#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-	#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	#    GNU General Public License for more details.
-	#
-	#    You should have received a copy of the GNU General Public License
-	#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-	#
-	##############################################################################
-	${7}
-snippet config
-	# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+	# Copyright ${1:200X} ${2:Company}
+	# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+	${3}
 # this snippet is usefull to clear the rule cache
 # specialy with OpenObject 5.2 and multi company
 snippet rule
@@ -282,13 +261,13 @@ snippet ondelete OnDelete Set Null
 snippet store
 	store=True, ${1}
 snippet compute compute
-	compute='${1:_methodName}', ${2}
+	compute='${1:_compute_method_name}', ${2}
 snippet compute inverse
-	inverse='${1:_methodName}', ${2}
+	inverse='${1:_inverse_method_name}', ${2}
 snippet compute search
-	search='${1:_methodName}', ${2}
-snippet relate
-	relate='${1:field.chain}', ${2}
+	search='${1:_search_method_name}', ${2}
+snippet related
+	related='${1:field.chain}', ${2}
 snippet default
 	default='${1:value}', ${2}
 #
@@ -621,7 +600,7 @@ snippet except raise osv.except_osv(title, message) (Old API)
 snippet except raise wizard.except_wizard(title, message) (Very old API)
 	raise wizard.except_wizard(_('${1:Error}'), _('${2:Message}'))
 snippet except raise exceptions.Warning(message) (New API)
-	raise exceptions.Warning(_('${1:Message}'))
+	raise exceptions.UserError(_('${1:Message}'))
 snippet except raise exceptions.RedirectWarning(message, action, button_text) (New API)
 	raise exceptions.RedirectWarning(_('${1:Message}'), ${2:action_id}, _('${3:Button Text}'))
 ###
