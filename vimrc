@@ -42,6 +42,8 @@ set smartindent
 set autoindent
 set expandtab
 set title
+set cursorline
+highlight CursorLine cterm=bold
 
 "set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set list listchars=tab:»·,trail:.
