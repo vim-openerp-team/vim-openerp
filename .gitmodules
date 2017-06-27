@@ -25,3 +25,6 @@
 [submodule "vim/bundle/vim-cucumber"]
 	path = vim/bundle/vim-cucumber
 	url = https://github.com/tpope/vim-cucumber
+[submodule "vim/bundle/vim-orgmode"]
+	path = vim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode
