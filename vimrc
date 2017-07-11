@@ -83,6 +83,7 @@ map<C-F12> <ESC>:set list!<CR>
 map<F12> <ESC>:set wrap!<CR>
 
 map <F9> :!psql -d dbname < % <BAR> less
+let mapleader = ','
 
 au BufRead .irbrc set ft=ruby
 au! BufRead,BufNewFile *.haml set ft=haml
