@@ -163,7 +163,7 @@ noremap <silent><C-S-Right> :execute 'tabmove ' . tabpagenr()<CR>
 map <M-q> :bd<CR>
 
 if has("autocmd")
-    autocmd BufEnter * lcd %:p:h
+    autocmd BufEnter * if expand("%:p:h") !~ '://' | silent! lcd %:p:h | endif
 endif
 
 cabbr tb tab ball
