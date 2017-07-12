@@ -10,7 +10,14 @@ Add packages:
 - exuberant-ctags
 - python-flake8
 
- $ sudo aptitude install exuberant-ctags
+$ sudo aptitude install exuberant-ctags
+
+create symlinks in your home
+$ ln -s /path/to/vim-openerp/vim .vim
+$ ln -s /path/to vim-openerp/vimrc .vimrc
+
+Get submodule (in vim-openerp folder)
+$ git submodule update init
 
 For using Bicycle Repair Man, a Refactoring Tool for Python
 
