@@ -43,3 +43,6 @@
 [submodule "vim/bundle/taskpaper"]
 	path = vim/bundle/taskpaper
 	url = https://github.com/davidoc/taskpaper.vim
+[submodule "vim/bundle/DoxygenToolkit"]
+	path = vim/bundle/DoxygenToolkit
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim
