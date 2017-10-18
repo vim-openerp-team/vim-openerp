@@ -49,3 +49,6 @@
 [submodule "vim/bundle/xmledit"]
 	path = vim/bundle/xmledit
 	url = https://github.com/sukima/xmledit/
+[submodule "vim/bundle/riv"]
+	path = vim/bundle/riv
+	url = https://github.com/Rykka/riv.vim
