@@ -55,3 +55,6 @@
 [submodule "vim/bundle/pydoc"]
 	path = vim/bundle/pydoc
 	url = https://github.com/fs111/pydoc.vim
+[submodule "vim/bundle/TaskList"]
+	path = vim/bundle/TaskList
+	url = https://github.com/vim-scripts/TaskList.vim
