@@ -40,3 +40,6 @@
 [submodule "vim/bundle/pgsql"]
 	path = vim/bundle/pgsql
 	url = https://github.com/exu/pgsql.vim
+[submodule "vim/bundle/taskpaper"]
+	path = vim/bundle/taskpaper
+	url = https://github.com/davidoc/taskpaper.vim
