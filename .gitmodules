@@ -52,3 +52,6 @@
 [submodule "vim/bundle/riv"]
 	path = vim/bundle/riv
 	url = https://github.com/Rykka/riv.vim
+[submodule "vim/bundle/pydoc"]
+	path = vim/bundle/pydoc
+	url = https://github.com/fs111/pydoc.vim
