@@ -46,3 +46,6 @@
 [submodule "vim/bundle/DoxygenToolkit"]
 	path = vim/bundle/DoxygenToolkit
 	url = https://github.com/vim-scripts/DoxygenToolkit.vim
+[submodule "vim/bundle/xmledit"]
+	path = vim/bundle/xmledit
+	url = https://github.com/sukima/xmledit/
