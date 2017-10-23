@@ -96,6 +96,7 @@ au BufNewFile,BufRead *.pgsql setf pgsql
 au BufRead /tmp/psql.edit.* set syntax=pgsql
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set colorcolumn=80
 " Delete space in end file on write file
 autocmd BufWritePre *.py :%s/\s\+$//e
 
