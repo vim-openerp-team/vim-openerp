@@ -135,20 +135,6 @@ nmap <leader>rci :%!ruby-code-indenter<cr>
 
 let g:rails_menu=2
 
-python << EOL
-import vim
-import sys
-import os
-def EvaluateCurrentRange():
-    eval(compile('\n'.join(vim.current.range),'','exec'), globals())
-def CheckPy():
-    eval(compile('\n'.join(vim.current.buffer), '', 'exec'), globals()) 
-sys.path.append("/usr/local/lib/python2.6/site-packages")
-EOL
-
-map <C-h> :py EvaluateCurrentRange()
-map <C-j> :py CheckPy()
-
 map <silent><A-Right> :tabnext<CR>
 map <silent><A-Left> :tabprevious<CR>
 map <silent><A-Up> :move -2<CR>
